@@ -1,0 +1,20 @@
+<div class="card">
+    <h3>🎨 CSS Minify - Nén CSS</h3>
+    
+    <div class="form-group">
+        <label for="css-minify-input">Nhập CSS code:</label>
+        <textarea id="css-minify-input" rows="12" placeholder="body { margin: 0; padding: 0; }"></textarea>
+    </div>
+    
+    <button class="btn" onclick="minifyCSS()">🎨 Minify CSS</button>
+    
+    <div class="form-group">
+        <label for="css-minify-output">Kết quả minified:</label>
+        <textarea id="css-minify-output" rows="12" readonly></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyCSSMinifyResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearCSSMinify()">🗑️ Clear</button>
+    </div>
+</div>

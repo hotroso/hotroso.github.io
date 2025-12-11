@@ -1,0 +1,34 @@
+<div class="qr-files-container">
+    <div class="qr-files-header">
+        <div class="btn-group">
+            <button id="qr-files-switch" class="btn btn-secondary">🔄 Chuyển Camera</button>
+            <a id="qr-files-download" class="btn btn-success hidden" download="received_file.bin">📥 Tải File</a>
+        </div>
+    </div>
+    <div class="qr-scanner-container">
+        <div id="qr-files-reader"></div>
+    </div>
+    <div id="qr-files-status">⏳ Đang khởi động...</div>
+    <div class="qr-stats">
+        <div class="qr-stat-item">
+            <div class="qr-stat-value" id="qr-files-received">0</div>
+            <div>Đã nhận</div>
+        </div>
+        <div class="qr-stat-item">
+            <div class="qr-stat-value" id="qr-files-total">?</div>
+            <div>Tổng</div>
+        </div>
+        <div class="qr-stat-item">
+            <div class="qr-stat-value" id="qr-files-progress">0%</div>
+            <div>Tiến độ</div>
+        </div>
+    </div>
+    <div class="qr-progress-bar">
+        <div class="qr-progress-fill" id="qr-files-fill"></div>
+    </div>
+    <div id="qr-files-missing" class="hidden">
+        <div class="qr-missing-title">📋 Blocks còn thiếu:</div>
+        <div id="qr-files-missing-list"></div>
+    </div>
+    <div id="qr-files-log"></div>
+</div>

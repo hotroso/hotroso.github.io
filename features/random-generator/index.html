@@ -1,0 +1,43 @@
+<div class="card">
+    <h3>🎲 Random Generator - Tạo Chuỗi Ngẫu Nhiên</h3>
+    
+    <div class="form-group">
+        <label for="random-length">Độ dài chuỗi:</label>
+        <input type="number" id="random-length" value="16" min="1" max="1000" style="width: 150px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
+    
+    <div class="form-group">
+        <label for="random-count">Số lượng chuỗi:</label>
+        <input type="number" id="random-count" value="1" min="1" max="100" style="width: 150px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn" onclick="generateAlphanumeric()">🔤 Alphanumeric</button>
+        <button class="btn" onclick="generateAlphabetic()">🔡 Alphabetic</button>
+        <button class="btn" onclick="generateNumeric()">🔢 Numeric</button>
+    </div>
+    
+    <div class="btn-group" style="margin-top: 8px;">
+        <button class="btn" onclick="generateAscii()">⌨️ ASCII</button>
+        <button class="btn" onclick="generateHex()">🔣 Hex</button>
+        <button class="btn" onclick="generatePassword()">🔐 Password</button>
+    </div>
+    
+    <div class="btn-group" style="margin-top: 8px;">
+        <button class="btn" onclick="generateUUID()">🆔 UUID</button>
+        <button class="btn btn-secondary" onclick="clearRandom()">🗑️ Clear</button>
+    </div>
+    
+    <div class="form-group">
+        <label for="random-output">Kết quả:</label>
+        <textarea id="random-output" rows="10" readonly></textarea>
+    </div>
+    
+    <button class="btn btn-success" onclick="copyRandomResult()">📋 Copy Kết Quả</button>
+</div>
+
+<style>
+input[type="number"] {
+    font-size: 14px;
+}
+</style>

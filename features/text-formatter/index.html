@@ -1,0 +1,32 @@
+<div class="card">
+    <h3>Text Formatter - Định Dạng Văn Bản</h3>
+    <div class="form-group">
+        <label for="text-input">Nhập văn bản:</label>
+        <textarea id="text-input" rows="6" placeholder="Nhập văn bản cần xử lý..."></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn" onclick="capitalizeText()">📝 Capitalize</button>
+        <button class="btn" onclick="capitalizeFullyText()">🔠 Capitalize Fully</button>
+        <button class="btn" onclick="uncapitalizeText()">🔡 Uncapitalize</button>
+        <button class="btn" onclick="swapCaseText()">🔄 Swap Case</button>
+    </div>
+    
+    <div class="btn-group" style="margin-top: 8px;">
+        <button class="btn" onclick="getInitials()">🎯 Initials</button>
+        <button class="btn" onclick="wrapText()">📏 Word Wrap</button>
+        <button class="btn btn-secondary" onclick="clearTextFormatter()">🗑️ Clear</button>
+    </div>
+    
+    <div class="form-group" id="wrap-options" style="display:none; margin-top: 16px;">
+        <label for="wrap-length">Độ dài dòng:</label>
+        <input type="number" id="wrap-length" value="80" min="10" max="200" style="width: 100px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+    </div>
+    
+    <div class="form-group">
+        <label for="text-output">Kết quả:</label>
+        <textarea id="text-output" rows="6" readonly></textarea>
+    </div>
+    
+    <button class="btn btn-success" onclick="copyTextResult()">📋 Copy Kết Quả</button>
+</div>

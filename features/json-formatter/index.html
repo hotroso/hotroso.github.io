@@ -1,0 +1,29 @@
+<div class="card">
+    <h3>📋 JSON Formatter - Định Dạng & Escape JSON</h3>
+    
+    <div class="form-group">
+        <label for="json-input">Nhập JSON:</label>
+        <textarea id="json-input" rows="10" placeholder='{"name": "value"}'></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn" onclick="formatJSON()">✨ Format (Pretty)</button>
+        <button class="btn" onclick="minifyJSON()">📦 Minify</button>
+        <button class="btn" onclick="escapeJSON()">🔒 Escape</button>
+        <button class="btn" onclick="unescapeJSON()">🔓 Unescape</button>
+    </div>
+    
+    <div class="btn-group" style="margin-top: 8px;">
+        <button class="btn" onclick="validateJSON()">✅ Validate</button>
+        <button class="btn btn-secondary" onclick="clearJSON()">🗑️ Clear</button>
+    </div>
+    
+    <div class="form-group">
+        <label for="json-output">Kết quả:</label>
+        <textarea id="json-output" rows="10" readonly></textarea>
+    </div>
+    
+    <div id="json-error" style="display:none; padding: 12px; background: #fee; border: 1px solid #fcc; border-radius: 4px; color: #c00; margin-top: 12px;"></div>
+    
+    <button class="btn btn-success" onclick="copyJSONResult()">📋 Copy Kết Quả</button>
+</div>

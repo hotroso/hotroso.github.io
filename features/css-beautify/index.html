@@ -1,0 +1,20 @@
+<div class="card">
+    <h3>💅 CSS Beautify - Định Dạng CSS</h3>
+    
+    <div class="form-group">
+        <label for="css-beautify-input">Nhập CSS code:</label>
+        <textarea id="css-beautify-input" rows="12" placeholder="body{margin:0;padding:0;}"></textarea>
+    </div>
+    
+    <button class="btn" onclick="beautifyCSS()">💅 Beautify CSS</button>
+    
+    <div class="form-group">
+        <label for="css-beautify-output">Kết quả beautified:</label>
+        <textarea id="css-beautify-output" rows="12" readonly></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyCSSBeautifyResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearCSSBeautify()">🗑️ Clear</button>
+    </div>
+</div>

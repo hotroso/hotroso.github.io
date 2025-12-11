@@ -1,0 +1,20 @@
+<div class="card">
+    <h3>🔒 Base64 Encode - Mã Hóa Base64</h3>
+    
+    <div class="form-group">
+        <label for="encode-input">Nhập text cần encode:</label>
+        <textarea id="encode-input" rows="10" placeholder="Nhập text..."></textarea>
+    </div>
+    
+    <button class="btn" onclick="encodeToBase64()">🔒 Encode to Base64</button>
+    
+    <div class="form-group">
+        <label for="encode-output">Kết quả Base64:</label>
+        <textarea id="encode-output" rows="10" readonly></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyEncodeResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearEncode()">🗑️ Clear</button>
+    </div>
+</div>

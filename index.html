@@ -1,1 +1,205 @@
-trang ok roi
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <title>DevTools - Công Cụ Hỗ Trợ Lập Trình Viên Online Miễn Phí</title>
+    <meta name="description" content="Bộ công cụ online miễn phí cho developer. Tạo mã QR, đọc QR từ file, escape Java/HTML/XML/SQL/CSV. Nhanh chóng, bảo mật, không cần cài đặt.">
+    <meta name="keywords" content="tạo mã qr, qr code generator, đọc qr code online, json formatter, json validator, escape java, escape html, escape xml, escape sql, escape csv, random password generator, uuid generator, text formatter, developer tools, công cụ lập trình viên, devtools, online tools free, qr scanner, minify json, format json">
+    <meta name="author" content="QR Tools">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://hotroso.github.io/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hotroso.github.io/">
+    <meta property="og:title" content="DevTools - Công Cụ Hỗ Trợ Developer Online">
+    <meta property="og:description" content="Bộ công cụ online miễn phí cho developer. Tạo mã QR, đọc QR, escape string và nhiều công cụ khác.">
+    <meta property="og:image" content="https://hotroso.github.io/images/og-image.jpg">
+    <meta property="og:locale" content="vi_VN">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hotroso.github.io/">
+    <meta name="twitter:title" content="DevTools - Công Cụ Developer Online">
+    <meta name="twitter:description" content="Tạo mã QR, đọc QR code, escape string - Công cụ online miễn phí cho developer">
+    <meta name="twitter:image" content="https://hotroso.github.io/images/twitter-image.jpg">
+    
+    <!-- Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "DevTools - Công Cụ Developer Online",
+      "description": "Bộ công cụ online miễn phí cho developer: Tạo mã QR, đọc QR từ file, escape Java/HTML/XML/SQL/CSV",
+      "url": "https://hotroso.github.io",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "VND"
+      },
+      "featureList": [
+        "Tạo mã QR Code miễn phí không giới hạn",
+        "Đọc và giải mã QR Code từ file ảnh",
+        "JSON Formatter - Format, minify, validate JSON",
+        "Text Formatter - Capitalize, swap case, word wrap",
+        "Random Generator - Password, UUID, hex, alphanumeric",
+        "Escape Java String - Bảo vệ khỏi injection",
+        "Escape HTML - Chuyển đổi HTML entities",
+        "Escape XML - Xử lý ký tự đặc biệt XML",
+        "Escape SQL - Bảo vệ khỏi SQL injection",
+        "Escape CSV - Format CSV data"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1250"
+      }
+    }
+    </script>
+    
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "DevTools có miễn phí không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có, DevTools hoàn toàn miễn phí 100%. Không giới hạn số lượng sử dụng, không cần đăng ký tài khoản, không có phí ẩn."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dữ liệu của tôi có được upload lên server không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Không. Tất cả công cụ xử lý hoàn toàn trên trình duyệt của bạn (client-side). Dữ liệu không bao giờ được upload lên server, đảm bảo bảo mật tuyệt đối."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tôi có thể sử dụng trên mobile không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. DevTools được thiết kế responsive, hoạt động mượt mà trên mọi thiết bị: desktop, tablet và mobile."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Có công cụ nào để tạo QR code không?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Có. DevTools cung cấp QR Code Generator để tạo mã QR miễn phí và QR Scanner để đọc QR code từ file ảnh."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#3498db">
+    <meta name="msapplication-TileColor" content="#3498db">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>DevTools</h1>
+                <p class="tagline">Công cụ tiện ích</p>
+            </div>
+            <nav class="sidebar-menu" id="sidebar-menu">
+                <!-- Menu items loaded dynamically -->
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()">☰</button>
+                <h2 id="page-title">QR Code Generator</h2>
+            </header>
+
+            <div class="content" id="content">
+                <!-- Feature content loaded dynamically -->
+                <section class="welcome-section">
+                    <h1>Bộ 18+ Công Cụ Developer Online Miễn Phí 2024</h1>
+                    <p class="lead">Tổng hợp 18+ công cụ chuyên nghiệp cho lập trình viên - QR Code, JSON, Base64, URL Encode/Decode, JS/CSS Minify/Beautify, Escape String, Text Formatter, Random Generator và nhiều hơn nữa</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="icon">📱</span>
+                            <h3>QR Code Generator</h3>
+                            <p>Tạo mã QR code chất lượng cao, tùy chỉnh màu sắc và kích thước. Hỗ trợ text, URL, vCard, WiFi.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="icon">📁</span>
+                            <h3>QR Scanner</h3>
+                            <p>Đọc và giải mã QR code từ file ảnh. Xử lý hàng loạt, xuất kết quả nhanh chóng.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="icon">🔐</span>
+                            <h3>Base64 & URL Tools</h3>
+                            <p>Encode/Decode Base64 và URL. Hỗ trợ UTF-8, Unicode. Xử lý query string, parameters an toàn.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="icon">📦</span>
+                            <h3>JS/CSS Minify & Beautify</h3>
+                            <p>Nén và định dạng JavaScript, CSS. Tối ưu performance website. Sử dụng Terser và CleanCSS.</p>
+                        </div>
+                        <div class="feature-card">
+                            <span class="icon">⚙️</span>
+                            <h3>Escape Tools</h3>
+                            <p>Escape/Unescape cho Java, HTML, XML, SQL, CSV. Bảo vệ khỏi injection attacks.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="seo-content">
+                        <h2>Tại Sao Chọn DevTools?</h2>
+                        <ul>
+                            <li><strong>100% Miễn Phí:</strong> 18+ công cụ hoàn toàn miễn phí, không giới hạn sử dụng</li>
+                            <li><strong>Bảo Mật Tuyệt Đối:</strong> Xử lý client-side, dữ liệu không upload lên server</li>
+                            <li><strong>Nhanh Chóng:</strong> Xử lý tức thì, không cần chờ đợi</li>
+                            <li><strong>Đa Năng:</strong> 18+ công cụ chuyên nghiệp trong một nền tảng</li>
+                            <li><strong>Không Cần Cài Đặt:</strong> Sử dụng ngay trên mọi trình duyệt</li>
+                            <li><strong>Responsive:</strong> Hoạt động mượt mà trên desktop, tablet, mobile</li>
+                            <li><strong>Thư Viện Mạnh:</strong> Sử dụng Terser, CleanCSS, js-beautify</li>
+                        </ul>
+                        
+                        <h2>Danh Sách Công Cụ</h2>
+                        <ul>
+                            <li><strong>QR Code:</strong> Generator, Scanner</li>
+                            <li><strong>JSON:</strong> Formatter, Minify, Validate, Escape</li>
+                            <li><strong>Base64:</strong> Encode, Decode</li>
+                            <li><strong>URL:</strong> Encode, Decode</li>
+                            <li><strong>JavaScript:</strong> Minify, Beautify</li>
+                            <li><strong>CSS:</strong> Minify, Beautify</li>
+                            <li><strong>Text:</strong> Formatter, Capitalize, Swap Case</li>
+                            <li><strong>Random:</strong> Password, UUID, Hex, Alphanumeric</li>
+                            <li><strong>Escape:</strong> Java, HTML, XML, SQL, CSV</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>

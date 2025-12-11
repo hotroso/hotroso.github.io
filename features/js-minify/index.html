@@ -1,0 +1,22 @@
+<div class="card">
+    <h3>📦 JS Minify - Nén JavaScript</h3>
+    
+    <div class="form-group">
+        <label for="js-minify-input">Nhập JavaScript code:</label>
+        <textarea id="js-minify-input" rows="12" placeholder="function hello() { console.log('Hello World'); }"></textarea>
+    </div>
+    
+    <button class="btn" onclick="minifyJS()">📦 Minify JavaScript</button>
+    
+    <div class="form-group">
+        <label for="js-minify-output">Kết quả minified:</label>
+        <textarea id="js-minify-output" rows="12" readonly></textarea>
+    </div>
+    
+    <div id="js-minify-error" style="display:none; padding: 12px; background: #fee; border: 1px solid #fcc; border-radius: 4px; color: #c00; margin-top: 12px;"></div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyJSMinifyResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearJSMinify()">🗑️ Clear</button>
+    </div>
+</div>

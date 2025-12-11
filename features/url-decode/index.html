@@ -1,0 +1,20 @@
+<div class="card">
+    <h3>🔖 URL Decode - Giải Mã URL</h3>
+    
+    <div class="form-group">
+        <label for="url-decode-input">Nhập URL encoded cần decode:</label>
+        <textarea id="url-decode-input" rows="10" placeholder="Nhập URL encoded..."></textarea>
+    </div>
+    
+    <button class="btn" onclick="decodeURL()">🔖 Decode URL</button>
+    
+    <div class="form-group">
+        <label for="url-decode-output">Kết quả text:</label>
+        <textarea id="url-decode-output" rows="10" readonly></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyURLDecodeResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearURLDecode()">🗑️ Clear</button>
+    </div>
+</div>

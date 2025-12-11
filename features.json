@@ -1,0 +1,141 @@
+{
+  "features": [
+    {
+      "id": "qr-generator",
+      "name": "QR Generator",
+      "icon": "📱",
+      "html": "features/qr-generator/index.html",
+      "css": "features/qr-generator/style.css",
+      "js": "features/qr-generator/script.js",
+      "libs": ["js/qrcode.min.js"]
+    },
+    {
+      "id": "qr-files",
+      "name": "QR Files",
+      "icon": "📁",
+      "html": "features/qr-files/index.html",
+      "css": "features/qr-files/style.css",
+      "js": "features/qr-files/script.js",
+      "libs": ["js/html5-qrcode.min.js", "js/pako.min.js", "js/jszip.min.js"]
+    },
+    {
+      "id": "escape-java",
+      "name": "Escape Java",
+      "icon": "☕",
+      "html": "features/escape-java/index.html",
+      "js": "features/escape-java/script.js"
+    },
+    {
+      "id": "escape-html",
+      "name": "Escape HTML",
+      "icon": "🌐",
+      "html": "features/escape-html/index.html",
+      "js": "features/escape-html/script.js"
+    },
+    {
+      "id": "escape-xml",
+      "name": "Escape XML",
+      "icon": "📄",
+      "html": "features/escape-xml/index.html",
+      "js": "features/escape-xml/script.js"
+    },
+    {
+      "id": "escape-sql",
+      "name": "Escape SQL",
+      "icon": "🗄️",
+      "html": "features/escape-sql/index.html",
+      "js": "features/escape-sql/script.js"
+    },
+    {
+      "id": "escape-csv",
+      "name": "Escape CSV",
+      "icon": "📊",
+      "html": "features/escape-csv/index.html",
+      "js": "features/escape-csv/script.js"
+    },
+    {
+      "id": "text-formatter",
+      "name": "Text Formatter",
+      "icon": "✏️",
+      "html": "features/text-formatter/index.html",
+      "js": "features/text-formatter/script.js"
+    },
+    {
+      "id": "random-generator",
+      "name": "Random Generator",
+      "icon": "🎲",
+      "html": "features/random-generator/index.html",
+      "js": "features/random-generator/script.js"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "icon": "📋",
+      "html": "features/json-formatter/index.html",
+      "js": "features/json-formatter/script.js"
+    },
+    {
+      "id": "base64-encode",
+      "name": "Base64 Encode",
+      "icon": "🔒",
+      "html": "features/base64-encode/index.html",
+      "js": "features/base64-encode/script.js"
+    },
+    {
+      "id": "base64-decode",
+      "name": "Base64 Decode",
+      "icon": "🔓",
+      "html": "features/base64-decode/index.html",
+      "js": "features/base64-decode/script.js"
+    },
+    {
+      "id": "url-encode",
+      "name": "URL Encode",
+      "icon": "🔗",
+      "html": "features/url-encode/index.html",
+      "js": "features/url-encode/script.js"
+    },
+    {
+      "id": "url-decode",
+      "name": "URL Decode",
+      "icon": "🔖",
+      "html": "features/url-decode/index.html",
+      "js": "features/url-decode/script.js"
+    },
+    {
+      "id": "js-minify",
+      "name": "JS Minify",
+      "icon": "📦",
+      "html": "features/js-minify/index.html",
+      "js": "features/js-minify/script.js",
+      "libs": ["https://cdn.jsdelivr.net/npm/terser@5.16.1/dist/bundle.min.js"]
+    },
+    {
+      "id": "js-beautify",
+      "name": "JS Beautify",
+      "icon": "✨",
+      "html": "features/js-beautify/index.html",
+      "js": "features/js-beautify/script.js",
+      "libs": ["https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.min.js"]
+    },
+    {
+      "id": "css-minify",
+      "name": "CSS Minify",
+      "icon": "🎨",
+      "html": "features/css-minify/index.html",
+      "js": "features/css-minify/script.js",
+      "libs": ["https://cdn.jsdelivr.net/npm/clean-css@5.3.2/dist/clean-css.min.js"]
+    },
+    {
+      "id": "css-beautify",
+      "name": "CSS Beautify",
+      "icon": "💅",
+      "html": "features/css-beautify/index.html",
+      "js": "features/css-beautify/script.js",
+      "libs": ["https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-css.min.js"]
+    }
+  ],
+  "sharedLibs": {
+    "escape": "js/escape-utils.js"
+  }
+}

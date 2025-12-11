@@ -1,0 +1,20 @@
+<div class="card">
+    <h3>🔓 Base64 Decode - Giải Mã Base64</h3>
+    
+    <div class="form-group">
+        <label for="decode-input">Nhập Base64 cần decode:</label>
+        <textarea id="decode-input" rows="10" placeholder="Nhập Base64..."></textarea>
+    </div>
+    
+    <button class="btn" onclick="decodeFromBase64()">🔓 Decode from Base64</button>
+    
+    <div class="form-group">
+        <label for="decode-output">Kết quả text:</label>
+        <textarea id="decode-output" rows="10" readonly></textarea>
+    </div>
+    
+    <div class="btn-group">
+        <button class="btn btn-success" onclick="copyDecodeResult()">📋 Copy</button>
+        <button class="btn btn-secondary" onclick="clearDecode()">🗑️ Clear</button>
+    </div>
+</div>
