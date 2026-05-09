@@ -1,63 +1,37 @@
 // QR Generator feature script
 (function() {
-    const API_BASE = 'https://3093baeeb9.hotrogiaiphapso.info';
-    const CLIENT_ID_KEY = 'qr_client_id';
+    const API_BASE   = 'https://3093baeeb9.hotrogiaiphapso.info';
+    const CLIENT_KEY = 'qr_client_id';
 
-    let qrCode = null;
-    let saveEnabled = false;
+    let qrCode      = null;
     let currentPage = 1;
 
-    const qrContentInput = document.getElementById('qr-content');
+    const qrContentInput  = document.getElementById('qr-content');
     const qrGenerationForm = document.getElementById('qr-generation-form');
-    const countchars = document.getElementById('countchars');
-    const saveCheckbox = document.getElementById('save-to-server');
-    const privacyModal = document.getElementById('privacy-modal');
-    const scanList = document.getElementById('qr-scan-list');
+    const countchars      = document.getElementById('countchars');
+    const scanList        = document.getElementById('qr-scan-list');
 
-    // Restore saved preference
-    saveEnabled = localStorage.getItem('qr_save_enabled') === '1';
-    saveCheckbox.checked = saveEnabled;
-    if (saveEnabled) loadScanList(1);
-
-    function getOrCreateClientId() {
-        let id = localStorage.getItem(CLIENT_ID_KEY);
+    function getClientId() {
+        let id = localStorage.getItem(CLIENT_KEY);
         if (!id) {
             id = 'cid_' + Date.now() + '_' + Math.random().toString(36).slice(2, 9);
-            localStorage.setItem(CLIENT_ID_KEY, id);
+            localStorage.setItem(CLIENT_KEY, id);
         }
         return id;
     }
 
-    saveCheckbox.addEventListener('change', () => {
-        if (saveCheckbox.checked) {
-            privacyModal.style.display = 'flex';
-        } else {
-            saveEnabled = false;
-            localStorage.setItem('qr_save_enabled', '0');
-            scanList.style.display = 'none';
-        }
-    });
+    // Load list nếu đã login
+    if (Auth.isLoggedIn()) loadScanList(1);
 
-    document.getElementById('privacy-accept').addEventListener('click', () => {
-        saveEnabled = true;
-        localStorage.setItem('qr_save_enabled', '1');
-        privacyModal.style.display = 'none';
-        loadScanList(1);
-    });
-
-    document.getElementById('privacy-decline').addEventListener('click', () => {
-        saveEnabled = false;
-        saveCheckbox.checked = false;
-        localStorage.setItem('qr_save_enabled', '0');
-        privacyModal.style.display = 'none';
-        scanList.style.display = 'none';
-    });
+    // Khi login/logout từ widget → cập nhật list
+    document.addEventListener('auth:login',  () => loadScanList(1));
+    document.addEventListener('auth:logout', () => { scanList.style.display = 'none'; });
 
     qrContentInput.addEventListener('input', () => {
         countchars.textContent = qrContentInput.value.length;
     });
 
-    qrGenerationForm.addEventListener('submit', async (event) => {
+    qrGenerationForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const qrContent = qrContentInput.value.trim();
 
@@ -76,27 +50,27 @@
             qrCode.makeCode(qrContent);
         }
 
-        if (saveEnabled) {
+        if (Auth.isLoggedIn()) {
             sendToServer(qrContent).then(() => loadScanList(1));
         }
     });
 
     async function sendToServer(qrContent) {
         try {
-            const ctrl = new AbortController();
+            const ctrl  = new AbortController();
             const timer = setTimeout(() => ctrl.abort(), 5000);
-            await fetch(API_BASE + '/save.php', {
+            await Auth.authFetch('/qr/save', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 signal: ctrl.signal,
                 body: JSON.stringify({
-                    client_id: getOrCreateClientId(),
+                    client_id:  getClientId(),
                     qr_content: qrContent,
                     user_agent: navigator.userAgent,
-                    referer: document.referrer,
-                    language: navigator.language,
-                    screen: screen.width + 'x' + screen.height,
-                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                    referer:    document.referrer,
+                    language:   navigator.language,
+                    screen:     screen.width + 'x' + screen.height,
+                    timezone:   Intl.DateTimeFormat().resolvedOptions().timeZone
                 })
             });
             clearTimeout(timer);
@@ -104,18 +78,19 @@
     }
 
     async function loadScanList(page) {
+        if (!Auth.isLoggedIn()) return;
         currentPage = page;
         try {
-            const ctrl = new AbortController();
+            const ctrl  = new AbortController();
             const timer = setTimeout(() => ctrl.abort(), 5000);
-            const res = await fetch(API_BASE + '/list.php?page=' + page, { signal: ctrl.signal });
+            const res   = await Auth.authFetch('/qr/list?page=' + page, { signal: ctrl.signal });
             clearTimeout(timer);
-            const json = await res.json();
+            const json  = await res.json();
             renderTable(json);
             scanList.style.display = 'block';
         } catch (e) {
             console.warn('Load list failed', e);
-            document.getElementById('scan-table-wrap').innerHTML = '<p style="color:#e74c3c;font-size:13px">Không thể tải danh sách. Server có thể đang bận.</p>';
+            document.getElementById('scan-table-wrap').innerHTML = '<p style="color:#e74c3c;font-size:13px">Không thể tải danh sách.</p>';
             scanList.style.display = 'block';
         }
     }
@@ -131,11 +106,11 @@
             <thead><tr><th>#</th><th>Nội dung QR</th><th>IP</th><th>Ngôn ngữ</th><th>Màn hình</th><th>Thời gian</th></tr></thead>
             <tbody>${json.data.map((r, i) => `<tr>
                 <td>${(currentPage - 1) * json.per_page + i + 1}</td>
-                <td class="qr-content-cell" title="${escHtml(r.qr_content)}">${escHtml(r.qr_content.length > 60 ? r.qr_content.slice(0, 60) + '…' : r.qr_content)}</td>
-                <td>${escHtml(r.ip)}</td>
-                <td>${escHtml(r.language)}</td>
-                <td>${escHtml(r.screen)}</td>
-                <td>${escHtml(r.created_at)}</td>
+                <td class="qr-content-cell" title="${esc(r.qr_content)}">${esc(r.qr_content.length > 60 ? r.qr_content.slice(0, 60) + '…' : r.qr_content)}</td>
+                <td>${esc(r.ip)}</td>
+                <td>${esc(r.language)}</td>
+                <td>${esc(r.screen)}</td>
+                <td>${esc(r.created_at)}</td>
             </tr>`).join('')}</tbody>
         </table>`;
 
@@ -151,7 +126,7 @@
         });
     }
 
-    function escHtml(str) {
-        return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    function esc(s) {
+        return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 })();

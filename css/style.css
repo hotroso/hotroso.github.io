@@ -53,6 +53,76 @@ body {
     overflow-y: auto;
 }
 
+.auth-widget {
+    padding: 12px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-username {
+    font-size: 13px;
+    color: #ecf0f1;
+    word-break: break-all;
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 8px;
+    background: rgba(52,152,219,0.25);
+    color: #ecf0f1;
+    border: 1px solid rgba(52,152,219,0.5);
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.auth-btn:hover { background: rgba(52,152,219,0.45); }
+
+.auth-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 8px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.2s;
+}
+
+.auth-tab.active {
+    color: #3498db;
+    border-bottom-color: #3498db;
+    font-weight: 600;
+}
+
+.auth-error {
+    color: #e74c3c;
+    font-size: 13px;
+    min-height: 18px;
+    margin-bottom: 4px;
+}
+
+.auth-terms {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.auth-terms input { margin-right: 6px; }
+
 .menu-item {
     padding: 12px 16px;
     cursor: pointer;

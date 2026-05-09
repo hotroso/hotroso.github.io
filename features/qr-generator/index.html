@@ -5,38 +5,13 @@
             <textarea id="qr-content" rows="6" placeholder="Nhập văn bản, URL hoặc dữ liệu bạn muốn chuyển thành QR code..." autocomplete="off"></textarea>
             <div class="char-count">Tổng số ký tự: <span id="countchars">0</span></div>
         </div>
-        <div class="save-option">
-            <label class="toggle-label">
-                <input type="checkbox" id="save-to-server"> Lưu lên server
-            </label>
-        </div>
         <button type="submit" class="btn">Tạo QR Code</button>
     </form>
     <div id="qr-code"></div>
 </div>
 
-<!-- Modal đồng ý bảo mật -->
-<div id="privacy-modal" class="modal-overlay" style="display:none">
-    <div class="modal-box">
-        <h3>Điều khoản bảo mật</h3>
-        <p>Khi bật tính năng <strong>Lưu lên server</strong>, hệ thống sẽ thu thập và lưu trữ:</p>
-        <ul>
-            <li>Nội dung QR code bạn tạo</li>
-            <li>Địa chỉ IP, User Agent, ngôn ngữ trình duyệt</li>
-            <li>Thông tin màn hình, múi giờ</li>
-            <li>Thời gian tạo</li>
-        </ul>
-        <p>Dữ liệu được dùng cho mục đích thống kê và theo dõi. Bạn có đồng ý không?</p>
-        <div class="modal-actions">
-            <button class="btn" id="privacy-accept">Đồng ý</button>
-            <button class="btn btn-secondary" id="privacy-decline">Từ chối</button>
-        </div>
-    </div>
-</div>
-
-<!-- Danh sách đã lưu -->
 <div id="qr-scan-list" class="card" style="display:none">
-    <h3>Lịch sử QR đã lưu</h3>
+    <h3>Lịch sử QR của bạn</h3>
     <div id="scan-table-wrap"></div>
     <div id="scan-pagination" class="pagination"></div>
 </div>
