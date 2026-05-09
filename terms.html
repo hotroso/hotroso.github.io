@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điều khoản sử dụng - DevTools</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f4f6f8;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .page {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 48px 24px 80px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        .hero {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            border-radius: 16px;
+            padding: 40px 40px 36px;
+            color: white;
+            margin-bottom: 32px;
+        }
+
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card h2 .icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .icon-blue   { background: #ebf5fb; }
+        .icon-green  { background: #eafaf1; }
+        .icon-orange { background: #fef9e7; }
+        .icon-red    { background: #fdedec; }
+        .icon-purple { background: #f4ecf7; }
+
+        .card p { font-size: 14px; color: #555; margin-bottom: 10px; }
+        .card p:last-child { margin-bottom: 0; }
+
+        .card ul {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .card ul li {
+            font-size: 14px;
+            color: #555;
+            padding: 6px 0 6px 20px;
+            position: relative;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .card ul li:last-child { border-bottom: none; }
+
+        .card ul li::before {
+            content: '•';
+            position: absolute;
+            left: 6px;
+            color: #3498db;
+            font-weight: 700;
+        }
+
+        .highlight {
+            background: #f8f9fa;
+            border-left: 3px solid #3498db;
+            border-radius: 0 8px 8px 0;
+            padding: 12px 16px;
+            font-size: 13px;
+            color: #555;
+            margin-top: 12px;
+        }
+
+        .updated {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <a href="/" class="back-link">← Quay lại DevTools</a>
+
+        <div class="hero">
+            <h1>📋 Điều khoản sử dụng</h1>
+            <p>Vui lòng đọc kỹ trước khi tạo tài khoản và sử dụng dịch vụ.</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-blue">📌</span> 1. Chấp nhận điều khoản</h2>
+            <p>Bằng việc tạo tài khoản và sử dụng DevTools, bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ các điều khoản dưới đây. Nếu không đồng ý, vui lòng không tạo tài khoản.</p>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-orange">📊</span> 2. Dữ liệu chúng tôi thu thập</h2>
+            <p>Khi bạn đăng ký tài khoản và sử dụng tính năng lưu trữ, hệ thống sẽ thu thập:</p>
+            <ul>
+                <li>Username và mật khẩu (được mã hóa bằng bcrypt)</li>
+                <li>Địa chỉ IP tại thời điểm sử dụng</li>
+                <li>User Agent (thông tin trình duyệt, hệ điều hành)</li>
+                <li>Nội dung QR code bạn tạo</li>
+                <li>Ngôn ngữ trình duyệt, độ phân giải màn hình, múi giờ</li>
+                <li>Thời gian thực hiện các thao tác</li>
+            </ul>
+            <div class="highlight">Dữ liệu được sử dụng cho mục đích thống kê, cải thiện dịch vụ và theo dõi hoạt động bất thường.</div>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-green">🔒</span> 3. Bảo mật dữ liệu</h2>
+            <ul>
+                <li>Mật khẩu được mã hóa một chiều bằng bcrypt, không thể giải mã</li>
+                <li>Dữ liệu được lưu trữ trên server bảo mật với kết nối HTTPS</li>
+                <li>Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân cho bên thứ ba</li>
+                <li>Truy cập API được xác thực bằng JWT token có thời hạn</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-purple">⚙️</span> 4. Quyền của người dùng</h2>
+            <ul>
+                <li>Bạn có thể đăng xuất bất kỳ lúc nào để hủy phiên đăng nhập</li>
+                <li>Các tính năng không yêu cầu đăng nhập vẫn hoạt động bình thường khi không có tài khoản</li>
+                <li>Dữ liệu QR chỉ hiển thị cho chính tài khoản của bạn</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-red">⚠️</span> 5. Giới hạn trách nhiệm</h2>
+            <p>DevTools là dịch vụ miễn phí, được cung cấp "nguyên trạng". Chúng tôi không chịu trách nhiệm về:</p>
+            <ul>
+                <li>Gián đoạn dịch vụ do bảo trì hoặc sự cố kỹ thuật</li>
+                <li>Mất dữ liệu do sự cố ngoài tầm kiểm soát</li>
+                <li>Thiệt hại phát sinh từ việc sử dụng hoặc không thể sử dụng dịch vụ</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2><span class="icon icon-blue">🔄</span> 6. Thay đổi điều khoản</h2>
+            <p>Chúng tôi có quyền cập nhật điều khoản này bất kỳ lúc nào. Phiên bản mới nhất luôn được đăng tại trang này. Việc tiếp tục sử dụng dịch vụ sau khi điều khoản thay đổi đồng nghĩa với việc bạn chấp nhận điều khoản mới.</p>
+        </div>
+
+        <p class="updated">Cập nhật lần cuối: tháng 5, 2025</p>
+    </div>
+</body>
+</html>
