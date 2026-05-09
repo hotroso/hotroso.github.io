@@ -103,13 +103,10 @@
             return;
         }
         wrap.innerHTML = `<table class="scan-table">
-            <thead><tr><th>#</th><th>Nội dung QR</th><th>IP</th><th>Ngôn ngữ</th><th>Màn hình</th><th>Thời gian</th></tr></thead>
+            <thead><tr><th>#</th><th>Nội dung QR</th><th>Thời gian</th></tr></thead>
             <tbody>${json.data.map((r, i) => `<tr>
                 <td>${(currentPage - 1) * json.per_page + i + 1}</td>
                 <td class="qr-content-cell" title="${esc(r.qr_content)}">${esc(r.qr_content.length > 60 ? r.qr_content.slice(0, 60) + '…' : r.qr_content)}</td>
-                <td>${esc(r.ip)}</td>
-                <td>${esc(r.language)}</td>
-                <td>${esc(r.screen)}</td>
                 <td>${esc(r.created_at)}</td>
             </tr>`).join('')}</tbody>
         </table>`;
