@@ -84,10 +84,36 @@ const processCompleteFile = async () => {
             statusEl.innerHTML = "✅ File sẵn sàng!";
             log("🎉 Hoàn thành! File đã sẵn sàng tải.", 'success');
         }
+
+        // Upload lên server nếu đã login
+        if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) {
+            uploadToServer(raw, filename);
+        }
     } catch (error) {
         log(`❌ Lỗi: ${error.message}`, 'error');
         statusEl.innerHTML = `❌ Lỗi: ${error.message}`;
     }
+};
+
+const uploadToServer = async (raw, fname) => {
+    try {
+        log("☁️ Đang gửi lên server...", 'info');
+        const ctrl  = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 30000);
+        const res   = await Auth.authFetch('/qr-files/upload', {
+            method:  'POST',
+            headers: { 'X-Filename': encodeURIComponent(fname), 'X-Filesize': raw.length, 'Content-Type': 'application/octet-stream' },
+            signal:  ctrl.signal,
+            body:    raw
+        });
+        clearTimeout(timer);
+        if (res.ok) {
+            log(`✅ Đã lưu lên server: ${fname}`, 'success');
+            loadFileList(1);
+        } else {
+            log('⚠️ Gửi server thất bại', 'warning');
+        }
+    } catch (e) { log('⚠️ Không thể gửi lên server', 'warning'); }
 };
 
 const updateProgress = () => {
@@ -190,4 +216,66 @@ startCamera(true);
 window.addEventListener('beforeunload', () => {
     if (qrScanner && isScanning) qrScanner.stop();
 });
+
+// ── Danh sách file đã upload ──────────────────────────────────────────────
+let fileListPage = 1;
+
+const fileListEl = document.getElementById('qr-files-list');
+
+if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) loadFileList(1);
+document.addEventListener('auth:login',  () => loadFileList(1));
+document.addEventListener('auth:logout', () => { fileListEl.style.display = 'none'; });
+
+async function loadFileList(page) {
+    if (typeof Auth === 'undefined' || !Auth.isLoggedIn()) return;
+    fileListPage = page;
+    try {
+        const ctrl  = new AbortController();
+        const timer = setTimeout(() => ctrl.abort(), 5000);
+        const res   = await Auth.authFetch('/qr-files/list?page=' + page, { signal: ctrl.signal });
+        clearTimeout(timer);
+        const json  = await res.json();
+        renderFileList(json);
+        fileListEl.style.display = 'block';
+    } catch (e) {
+        console.warn('Load file list failed', e);
+    }
+}
+
+function renderFileList(json) {
+    const wrap = document.getElementById('qr-files-list-wrap');
+    const pg   = document.getElementById('qr-files-list-pg');
+    if (!json.data || json.data.length === 0) {
+        wrap.innerHTML = '<p style="color:#888;font-size:13px">Chưa có file nào.</p>';
+        pg.innerHTML = ''; return;
+    }
+    wrap.innerHTML = `<table class="scan-table">
+        <thead><tr><th>#</th><th>Tên file</th><th>Kích thước</th><th>Thời gian</th></tr></thead>
+        <tbody>${json.data.map((r, i) => `<tr>
+            <td>${(fileListPage - 1) * json.per_page + i + 1}</td>
+            <td>${esc(r.filename)}</td>
+            <td>${formatSize(r.filesize)}</td>
+            <td>${esc(r.created_at)}</td>
+        </tr>`).join('')}</tbody>
+    </table>`;
+    if (json.total_pages <= 1) { pg.innerHTML = ''; return; }
+    let btns = '';
+    for (let p = 1; p <= json.total_pages; p++) {
+        btns += `<button class="pg-btn${p === fileListPage ? ' active' : ''}" data-page="${p}">${p}</button>`;
+    }
+    pg.innerHTML = btns;
+    pg.querySelectorAll('.pg-btn').forEach(btn => {
+        btn.addEventListener('click', () => loadFileList(+btn.dataset.page));
+    });
+}
+
+function formatSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / 1024 / 1024).toFixed(2) + ' MB';
+}
+
+function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
 })();
