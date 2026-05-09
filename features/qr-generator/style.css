@@ -1,1 +1,53 @@
 /* QR Generator specific styles */
+.save-option {
+    margin-bottom: 12px;
+}
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+.toggle-label input { cursor: pointer; }
+
+.modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999;
+}
+.modal-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 28px 32px;
+    max-width: 460px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.modal-box h3 { margin-bottom: 12px; color: #2c3e50; }
+.modal-box p { color: #555; margin-bottom: 10px; font-size: 14px; line-height: 1.6; }
+.modal-box ul { padding-left: 20px; margin-bottom: 12px; }
+.modal-box ul li { font-size: 13px; color: #666; margin-bottom: 4px; }
+.modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+
+#qr-scan-list h3 { margin-bottom: 14px; color: #2c3e50; font-size: 16px; }
+
+.scan-table {
+    width: 100%; border-collapse: collapse; font-size: 13px;
+}
+.scan-table th, .scan-table td {
+    padding: 8px 10px; border: 1px solid #e0e0e0; text-align: left;
+}
+.scan-table th { background: #f5f5f5; font-weight: 600; color: #333; }
+.scan-table tr:hover td { background: #fafafa; }
+.qr-content-cell { max-width: 220px; word-break: break-all; }
+
+.pagination { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.pg-btn {
+    padding: 5px 12px; border: 1px solid #ddd; background: #fff;
+    border-radius: 4px; cursor: pointer; font-size: 13px;
+}
+.pg-btn:hover { background: #f0f0f0; }
+.pg-btn.active { background: #3498db; color: #fff; border-color: #3498db; }
