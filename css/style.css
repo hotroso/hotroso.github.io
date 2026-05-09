@@ -578,4 +578,11 @@ textarea:focus {
         align-items: center;
         gap: 12px;
     }
+
+    .auth-widget {
+        position: sticky;
+        bottom: 0;
+        background: #2c3e50;
+        z-index: 1;
+    }
 }
