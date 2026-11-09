@@ -53,12 +53,7 @@
         "Escape XML - Xử lý ký tự đặc biệt XML",
         "Escape SQL - Bảo vệ khỏi SQL injection",
         "Escape CSV - Format CSV data"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250"
-      }
+      ]
     }
     </script>
     
@@ -112,6 +107,9 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
+    <!-- Google Search Console: dán thẻ xác minh (nếu chọn cách "HTML tag") vào đây:
+         <meta name="google-site-verification" content="MÃ_CỦA_BẠN"> -->
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#3498db">
     <meta name="msapplication-TileColor" content="#3498db">
@@ -123,10 +121,13 @@
         <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>DevTools</h1>
+                <a class="brand" href="#" onclick="location.hash=''; return false;">DevTools</a>
                 <p class="tagline">Công cụ tiện ích</p>
             </div>
-            <nav class="sidebar-menu" id="sidebar-menu">
+            <div class="sidebar-search">
+                <input type="search" id="sidebar-search" placeholder="Tìm công cụ..." aria-label="Tìm công cụ" autocomplete="off">
+            </div>
+            <nav class="sidebar-menu" id="sidebar-menu" aria-label="Danh sách công cụ">
                 <!-- Menu items loaded dynamically -->
             </nav>
             <div class="auth-widget" id="auth-widget"></div>
@@ -134,14 +135,14 @@
 
         <main class="main-content">
             <header class="header">
-                <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()">☰</button>
-                <h2 id="page-title">QR Code Generator</h2>
+                <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()" aria-label="Mở menu công cụ">☰</button>
+                <h2 id="page-title">Trang chủ</h2>
             </header>
 
             <div class="content" id="content">
                 <!-- Feature content loaded dynamically -->
                 <section class="welcome-section">
-                    <h1>Bộ 18+ Công Cụ Developer Online Miễn Phí 2024</h1>
+                    <h1>Bộ 18+ Công Cụ Developer Online Miễn Phí</h1>
                     <p class="lead">Tổng hợp 18+ công cụ chuyên nghiệp cho lập trình viên - QR Code, JSON, Base64, URL Encode/Decode, JS/CSS Minify/Beautify, Escape String, Text Formatter, Random Generator và nhiều hơn nữa</p>
                     
                     <div class="features-grid">
@@ -201,6 +202,9 @@
             </div>
         </main>
     </div>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PFMDPDWD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>window.GA_SPA = true;</script>
+    <script src="js/analytics.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/app.js"></script>
 </body>

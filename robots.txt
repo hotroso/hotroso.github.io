@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /js/
-Disallow: /css/
 
 Sitemap: https://hotroso.github.io/sitemap.xml

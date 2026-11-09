@@ -17,20 +17,97 @@ const loadFeatures = async () => {
         await loadJS(data.sharedLibs.escape);
     }
     
-    // Build menu
-    features.forEach(feature => {
-        const menuItem = document.createElement('div');
+    // Build menu: "Trang chủ" + các công cụ (dùng thẻ <a> để bàn phím/Tab hoạt động)
+    const addMenuItem = (id, icon, name, href, onClick) => {
+        const menuItem = document.createElement('a');
         menuItem.className = 'menu-item';
-        menuItem.dataset.feature = feature.id;
-        menuItem.innerHTML = `<span class="menu-icon">${feature.icon}</span><span>${feature.name}</span>`;
-        menuItem.addEventListener('click', () => switchFeature(feature.id));
+        menuItem.href = href;
+        menuItem.dataset.feature = id;
+        menuItem.dataset.name = name.toLowerCase();
+        menuItem.innerHTML = `<span class="menu-icon" aria-hidden="true">${icon}</span><span class="menu-label">${name}</span>`;
+        menuItem.addEventListener('click', (e) => {
+            e.preventDefault();
+            onClick();
+            closeSidebar();
+        });
         sidebarMenu.appendChild(menuItem);
+    };
+    addMenuItem('home', '🏠', 'Trang chủ', '#', showHome);
+    features.forEach(feature => {
+        addMenuItem(feature.id, feature.icon, feature.name, `#${feature.id}`, () => switchFeature(feature.id));
     });
-    
-    // Load initial feature
+
+    const emptyMsg = document.createElement('p');
+    emptyMsg.className = 'menu-empty';
+    emptyMsg.hidden = true;
+    emptyMsg.textContent = 'Không tìm thấy công cụ phù hợp';
+    sidebarMenu.appendChild(emptyMsg);
+
+    // Tìm nhanh công cụ trong sidebar
+    const searchInput = document.getElementById('sidebar-search');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            const q = searchInput.value.trim().toLowerCase();
+            let visible = 0;
+            sidebarMenu.querySelectorAll('.menu-item').forEach(item => {
+                const show = !q || item.dataset.name.includes(q) || item.dataset.feature.includes(q);
+                item.hidden = !show;
+                if (show) visible++;
+            });
+            emptyMsg.hidden = visible > 0;
+        });
+    }
+
+    // Màn hình đầu tiên: công cụ theo hash, nếu không có thì hiện Trang chủ
     const hash = window.location.hash.slice(1);
-    const initialFeature = hash && features.find(f => f.id === hash) ? hash : features[0].id;
-    switchFeature(initialFeature);
+    if (hash && features.find(f => f.id === hash)) switchFeature(hash);
+    else showHome();
+};
+
+// ── Trang chủ: lưới tất cả công cụ ──────────────────────────────────────────
+const homeHTML = contentArea.innerHTML;
+let homeShown = false;
+const HOME_TITLE = 'DevTools - Công Cụ Hỗ Trợ Lập Trình Viên Online Miễn Phí';
+
+const showHome = () => {
+    if (homeShown) return;
+    homeShown = true;
+    contentArea.innerHTML = homeHTML;
+
+    const grid = contentArea.querySelector('.features-grid');
+    if (grid) {
+        grid.innerHTML = '';
+        features.forEach(f => {
+            const card = document.createElement('a');
+            card.className = 'feature-card';
+            card.href = `#${f.id}`;
+            card.innerHTML = `<span class="icon" aria-hidden="true">${f.icon}</span>
+                <h3>${f.name}</h3>
+                <p>${seoDescriptions[f.id] || ''}</p>`;
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                switchFeature(f.id);
+            });
+            grid.appendChild(card);
+        });
+    }
+
+    document.querySelectorAll('.menu-item').forEach(mi => mi.classList.remove('active'));
+    const homeItem = document.querySelector('[data-feature="home"]');
+    homeItem?.classList.add('active');
+    homeItem?.setAttribute('aria-current', 'page');
+
+    pageTitle.textContent = 'Trang chủ';
+    document.title = HOME_TITLE;
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+    currentFeature = null;
+    contentArea.scrollTop = 0;
+    window.trackPage?.(window.location.pathname, HOME_TITLE);
+};
+
+const closeSidebar = () => {
+    document.querySelector('.sidebar')?.classList.remove('active');
+    document.getElementById('sidebar-overlay')?.classList.remove('active');
 };
 
 const loadedStyles = new Set();
@@ -67,8 +144,13 @@ const switchFeature = async (featureId) => {
     if (!feature || currentFeature === featureId) return;
     
     // Update menu
-    document.querySelectorAll('.menu-item').forEach(mi => mi.classList.remove('active'));
-    document.querySelector(`[data-feature="${featureId}"]`)?.classList.add('active');
+    document.querySelectorAll('.menu-item').forEach(mi => {
+        mi.classList.remove('active');
+        mi.removeAttribute('aria-current');
+    });
+    const activeItem = document.querySelector(`[data-feature="${featureId}"]`);
+    activeItem?.classList.add('active');
+    activeItem?.setAttribute('aria-current', 'page');
     
     // Load CSS if exists
     if (feature.css) loadCSS(feature.css);
@@ -86,8 +168,17 @@ const switchFeature = async (featureId) => {
     }
     
     // Load HTML
-    const response = await fetch(feature.html);
-    const html = await response.text();
+    let html;
+    try {
+        const response = await fetch(feature.html);
+        if (!response.ok) throw new Error(response.status);
+        html = await response.text();
+    } catch (err) {
+        homeShown = false;
+        currentFeature = null;
+        contentArea.innerHTML = '<div class="card load-error">Không tải được công cụ này. Vui lòng kiểm tra kết nối mạng và thử lại.</div>';
+        return;
+    }
     contentArea.innerHTML = `<section id="${featureId}" class="feature-section active">${html}</section>`;
     
     pageTitle.textContent = feature.name;
@@ -95,8 +186,11 @@ const switchFeature = async (featureId) => {
     // Update SEO meta tags dynamically
     updateSEO(feature);
     
+    homeShown = false;
     window.location.hash = featureId;
     currentFeature = featureId;
+    contentArea.scrollTop = 0;
+    window.trackPage?.(`${window.location.pathname}#${featureId}`, document.title);
     
     // Load and execute JS if exists
     if (feature.js) {
@@ -104,8 +198,7 @@ const switchFeature = async (featureId) => {
     }
 };
 
-const updateSEO = (feature) => {
-    const seoTitles = {
+const seoTitles = {
         'qr-generator': 'Tạo Mã QR Code Online Miễn Phí - QR Generator',
         'qr-files': 'Đọc QR Code Từ File - QR Scanner Online',
         'escape-java': 'Escape Java String Online - Java Escape Tool',
@@ -147,6 +240,7 @@ const updateSEO = (feature) => {
         'css-beautify': 'Định dạng CSS code đẹp. Format CSS dễ đọc. Công cụ miễn phí.'
     };
     
+const updateSEO = (feature) => {
     document.title = seoTitles[feature.id] || `${feature.name} - DevTools`;
     
     let metaDesc = document.querySelector('meta[name="description"]');
@@ -159,6 +253,8 @@ window.addEventListener('hashchange', () => {
     const hash = window.location.hash.slice(1);
     if (hash && features.find(f => f.id === hash)) {
         switchFeature(hash);
+    } else if (!hash) {
+        showHome();
     }
 });
 
