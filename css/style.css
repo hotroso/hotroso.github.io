@@ -638,6 +638,61 @@ select:focus-visible {
 .seo-content li:last-child { border-bottom: none; }
 .seo-content strong { color: var(--primary); }
 
+/* ── Footer trang chủ & ghi nhận bản quyền ────────────────────────────── */
+.site-footer {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.product-links {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.product-links a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 2px 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface);
+    color: var(--text);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: border-color 0.15s;
+}
+
+.product-links a:hover { border-color: var(--primary); }
+
+.product-links small {
+    flex-basis: 100%;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.site-credit {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+}
+
+.sidebar-credit {
+    padding: 8px 12px 12px;
+    font-size: 11px;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--sidebar-muted);
+}
+
 /* ── Khung công cụ ─────────────────────────────────────────────────────── */
 .feature-section {
     max-width: 1000px;
