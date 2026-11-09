@@ -1,0 +1,30 @@
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="url-input">Nội dung</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="url-input" data-role="input" rows="8" spellcheck="false" placeholder="Nhập văn bản/tham số để mã hóa, hoặc chuỗi đã mã hóa (%20...) để giải mã..."></textarea>
+    </div>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="encode">Mã hóa (Encode)</button>
+        <button type="button" class="btn btn-outline" data-action="decode">Giải mã (Decode)</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+    </div>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="url-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="url-output" data-role="output" rows="8" readonly spellcheck="false"></textarea>
+    </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để mã hóa nhanh. Mã hóa dùng chuẩn <code>encodeURIComponent</code>, phù hợp cho giá trị tham số trên URL.</p>
+</div>

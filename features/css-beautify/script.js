@@ -1,27 +1,18 @@
-const cssBeautifyInput = document.getElementById('css-beautify-input');
-const cssBeautifyOutput = document.getElementById('css-beautify-output');
+// CSS Beautify (js-beautify)
+(function () {
+    const indentOptions = (root) => {
+        const v = root.querySelector('[data-option="indent"]').value;
+        return v === 'tab' ? { indent_with_tabs: true } : { indent_size: Number(v) };
+    };
 
-function beautifyCSS() {
-    const code = cssBeautifyInput.value.trim();
-    if (!code) return;
-    
-    try {
-        const beautified = css_beautify(code, {
-            indent_size: 2
-        });
-        cssBeautifyOutput.value = beautified;
-    } catch (e) {
-        alert('Lỗi: ' + e.message);
-    }
-}
-
-function clearCSSBeautify() {
-    cssBeautifyInput.value = '';
-    cssBeautifyOutput.value = '';
-}
-
-function copyCSSBeautifyResult() {
-    cssBeautifyOutput.select();
-    document.execCommand('copy');
-    alert('Đã copy!');
-}
+    Tools.register('css-beautify', {
+        init(root) {
+            UI.transformTool(root, {
+                example: '.nut-bam{color:#fff;background:#1f6feb;padding:10px 20px}.nut-bam:hover{opacity:.9}',
+                actions: {
+                    beautify: (v, r) => css_beautify(v, indentOptions(r))
+                }
+            });
+        }
+    });
+})();

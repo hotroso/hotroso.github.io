@@ -1,106 +1,52 @@
-const textInput = document.getElementById('text-input');
-const textOutput = document.getElementById('text-output');
+// Text Formatter
+(function () {
+    // Áp dụng fn cho ký tự đầu của mỗi từ (giữ nguyên khoảng trắng, xuống dòng)
+    const eachWordFirst = (text, fn) => text.replace(/(^|\s)(\S)/gu, (m, space, ch) => space + fn(ch));
 
-function capitalizeText() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const result = text.split(' ').map(word => {
-        if (word.length === 0) return word;
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join(' ');
-    
-    textOutput.value = result;
-}
-
-function capitalizeFullyText() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const result = text.toLowerCase().split(' ').map(word => {
-        if (word.length === 0) return word;
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    }).join(' ');
-    
-    textOutput.value = result;
-}
-
-function uncapitalizeText() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const result = text.split(' ').map(word => {
-        if (word.length === 0) return word;
-        return word.charAt(0).toLowerCase() + word.slice(1);
-    }).join(' ');
-    
-    textOutput.value = result;
-}
-
-function swapCaseText() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const result = text.split('').map(char => {
-        if (char === char.toUpperCase()) {
-            return char.toLowerCase();
-        } else {
-            return char.toUpperCase();
-        }
+    const swapCase = (text) => Array.from(text).map(ch => {
+        const upper = ch.toUpperCase();
+        return ch === upper ? ch.toLowerCase() : upper;
     }).join('');
-    
-    textOutput.value = result;
-}
 
-function getInitials() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const words = text.trim().split(/\s+/);
-    const initials = words.map(word => word.charAt(0).toUpperCase()).join('');
-    
-    textOutput.value = initials;
-}
+    const initials = (text) => text.trim().split(/\s+/)
+        .map(word => Array.from(word)[0] || '')
+        .join('')
+        .toUpperCase();
 
-function wrapText() {
-    const text = textInput.value;
-    if (!text) return;
-    
-    const wrapLength = parseInt(document.getElementById('wrap-length').value) || 80;
-    const words = text.split(' ');
-    let result = '';
-    let currentLine = '';
-    
-    words.forEach(word => {
-        if ((currentLine + word).length > wrapLength) {
-            result += currentLine.trim() + '\n';
-            currentLine = word + ' ';
-        } else {
-            currentLine += word + ' ';
+    // Ngắt dòng theo độ dài, giữ nguyên các đoạn đã xuống dòng sẵn
+    const wrap = (text, width) => text.split('\n').map(line => {
+        const words = line.split(/ +/);
+        const lines = [];
+        let current = '';
+        words.forEach(word => {
+            if (current && (current + ' ' + word).length > width) {
+                lines.push(current);
+                current = word;
+            } else {
+                current = current ? current + ' ' + word : word;
+            }
+        });
+        lines.push(current);
+        return lines.join('\n');
+    }).join('\n');
+
+    Tools.register('text-formatter', {
+        init(root) {
+            UI.transformTool(root, {
+                example: 'hôm nay trời đẹp, chúng ta cùng đi CÀ PHÊ nhé',
+                actions: {
+                    capitalize: v => eachWordFirst(v, c => c.toUpperCase()),
+                    capitalizeFully: v => eachWordFirst(v.toLowerCase(), c => c.toUpperCase()),
+                    uncapitalize: v => eachWordFirst(v, c => c.toLowerCase()),
+                    swapCase,
+                    initials,
+                    wrap: (v, r) => {
+                        const n = parseInt(r.querySelector('[data-option="wrap-length"]').value, 10);
+                        const width = Math.min(200, Math.max(10, isNaN(n) ? 80 : n));
+                        return wrap(v, width);
+                    }
+                }
+            });
         }
     });
-    
-    result += currentLine.trim();
-    textOutput.value = result;
-}
-
-function clearTextFormatter() {
-    textInput.value = '';
-    textOutput.value = '';
-}
-
-function copyTextResult() {
-    textOutput.select();
-    document.execCommand('copy');
-    alert('Đã copy kết quả!');
-}
-
-// Show wrap options when clicking Word Wrap
-document.addEventListener('DOMContentLoaded', () => {
-    const wrapBtn = document.querySelector('button[onclick="wrapText()"]');
-    if (wrapBtn) {
-        wrapBtn.addEventListener('click', () => {
-            document.getElementById('wrap-options').style.display = 'block';
-        });
-    }
-});
+})();

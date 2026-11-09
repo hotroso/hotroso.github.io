@@ -1,9 +1,20 @@
 {
+  "groups": [
+    { "id": "qr", "name": "QR Code" },
+    { "id": "encode", "name": "Mã hóa" },
+    { "id": "escape", "name": "Escape" },
+    { "id": "format", "name": "Định dạng & Nén" },
+    { "id": "utility", "name": "Tiện ích" }
+  ],
   "features": [
     {
       "id": "qr-generator",
+      "group": "qr",
       "name": "QR Generator",
       "icon": "📱",
+      "title": "Tạo Mã QR Code Online Miễn Phí - QR Generator",
+      "desc": "Tạo mã QR từ văn bản hoặc đường link và tải về dạng ảnh PNG.",
+      "keywords": "qr code tao ma generator",
       "html": "features/qr-generator/index.html",
       "css": "features/qr-generator/style.css",
       "js": "features/qr-generator/script.js",
@@ -11,131 +22,181 @@
     },
     {
       "id": "qr-files",
+      "group": "qr",
       "name": "QR Files",
       "icon": "📁",
+      "title": "Nhận File Qua Chuỗi Mã QR Bằng Camera - QR Files",
+      "desc": "Quét chuỗi mã QR bằng camera để nhận lại file được truyền qua QR.",
+      "keywords": "qr scanner quet camera file",
       "html": "features/qr-files/index.html",
       "css": "features/qr-files/style.css",
       "js": "features/qr-files/script.js",
       "libs": ["js/html5-qrcode.min.js", "js/pako.min.js", "js/jszip.min.js"]
     },
     {
+      "id": "base64",
+      "group": "encode",
+      "name": "Base64 Encode/Decode",
+      "icon": "🔐",
+      "aliases": ["base64-encode", "base64-decode"],
+      "title": "Base64 Encode/Decode Online - Mã Hóa & Giải Mã Base64",
+      "desc": "Mã hóa và giải mã Base64, hỗ trợ đầy đủ tiếng Việt và emoji (UTF-8).",
+      "keywords": "base64 encode decode ma hoa giai ma",
+      "html": "features/base64/index.html",
+      "js": "features/base64/script.js"
+    },
+    {
+      "id": "url",
+      "group": "encode",
+      "name": "URL Encode/Decode",
+      "icon": "🔗",
+      "aliases": ["url-encode", "url-decode"],
+      "title": "URL Encode/Decode Online - Mã Hóa & Giải Mã URL",
+      "desc": "Mã hóa và giải mã URL, query string, tham số trên đường link.",
+      "keywords": "url encode decode percent ma hoa giai ma link",
+      "html": "features/url/index.html",
+      "js": "features/url/script.js"
+    },
+    {
       "id": "escape-java",
+      "group": "escape",
       "name": "Escape Java",
       "icon": "☕",
-      "html": "features/escape-java/index.html",
-      "js": "features/escape-java/script.js"
+      "title": "Escape Java String Online - Java Escape Tool",
+      "desc": "Escape và unescape chuỗi Java/JavaScript: dấu nháy, xuống dòng, ký tự Unicode.",
+      "keywords": "escape unescape java javascript string",
+      "html": "features/escape/index.html",
+      "js": "features/escape/script.js",
+      "libs": ["js/escape-utils.js"]
     },
     {
       "id": "escape-html",
+      "group": "escape",
       "name": "Escape HTML",
       "icon": "🌐",
-      "html": "features/escape-html/index.html",
-      "js": "features/escape-html/script.js"
+      "title": "Escape HTML Online - HTML Escape Tool",
+      "desc": "Chuyển ký tự đặc biệt sang HTML entity (< > & \" ') và ngược lại.",
+      "keywords": "escape unescape html entity",
+      "html": "features/escape/index.html",
+      "js": "features/escape/script.js",
+      "libs": ["js/escape-utils.js"]
     },
     {
       "id": "escape-xml",
+      "group": "escape",
       "name": "Escape XML",
       "icon": "📄",
-      "html": "features/escape-xml/index.html",
-      "js": "features/escape-xml/script.js"
+      "title": "Escape XML Online - XML Escape Tool",
+      "desc": "Escape và unescape ký tự đặc biệt trong XML.",
+      "keywords": "escape unescape xml",
+      "html": "features/escape/index.html",
+      "js": "features/escape/script.js",
+      "libs": ["js/escape-utils.js"]
     },
     {
       "id": "escape-sql",
+      "group": "escape",
       "name": "Escape SQL",
       "icon": "🗄️",
-      "html": "features/escape-sql/index.html",
-      "js": "features/escape-sql/script.js"
+      "title": "Escape SQL Online - SQL Escape Tool",
+      "desc": "Nhân đôi dấu nháy đơn để đưa chuỗi vào câu lệnh SQL. Khi viết code, hãy ưu tiên dùng câu lệnh có tham số.",
+      "keywords": "escape unescape sql quote",
+      "html": "features/escape/index.html",
+      "js": "features/escape/script.js",
+      "libs": ["js/escape-utils.js"]
     },
     {
       "id": "escape-csv",
+      "group": "escape",
       "name": "Escape CSV",
       "icon": "📊",
-      "html": "features/escape-csv/index.html",
-      "js": "features/escape-csv/script.js"
-    },
-    {
-      "id": "text-formatter",
-      "name": "Text Formatter",
-      "icon": "✏️",
-      "html": "features/text-formatter/index.html",
-      "js": "features/text-formatter/script.js"
-    },
-    {
-      "id": "random-generator",
-      "name": "Random Generator",
-      "icon": "🎲",
-      "html": "features/random-generator/index.html",
-      "js": "features/random-generator/script.js"
+      "title": "Escape CSV Online - CSV Escape Tool",
+      "desc": "Bọc giá trị có dấu phẩy, dấu nháy, xuống dòng theo chuẩn CSV và ngược lại.",
+      "keywords": "escape unescape csv",
+      "html": "features/escape/index.html",
+      "js": "features/escape/script.js",
+      "libs": ["js/escape-utils.js"]
     },
     {
       "id": "json-formatter",
+      "group": "format",
       "name": "JSON Formatter",
       "icon": "📋",
+      "title": "JSON Formatter Online - Format & Validate JSON",
+      "desc": "Định dạng đẹp, nén, kiểm tra hợp lệ, escape và unescape JSON.",
+      "keywords": "json formatter format minify validate escape",
       "html": "features/json-formatter/index.html",
       "js": "features/json-formatter/script.js"
     },
     {
-      "id": "base64-encode",
-      "name": "Base64 Encode",
-      "icon": "🔒",
-      "html": "features/base64-encode/index.html",
-      "js": "features/base64-encode/script.js"
-    },
-    {
-      "id": "base64-decode",
-      "name": "Base64 Decode",
-      "icon": "🔓",
-      "html": "features/base64-decode/index.html",
-      "js": "features/base64-decode/script.js"
-    },
-    {
-      "id": "url-encode",
-      "name": "URL Encode",
-      "icon": "🔗",
-      "html": "features/url-encode/index.html",
-      "js": "features/url-encode/script.js"
-    },
-    {
-      "id": "url-decode",
-      "name": "URL Decode",
-      "icon": "🔖",
-      "html": "features/url-decode/index.html",
-      "js": "features/url-decode/script.js"
-    },
-    {
       "id": "js-minify",
+      "group": "format",
       "name": "JS Minify",
       "icon": "📦",
+      "title": "JS Minify Online - Nén JavaScript",
+      "desc": "Nén mã JavaScript bằng Terser để giảm dung lượng file.",
+      "keywords": "javascript js minify nen terser",
       "html": "features/js-minify/index.html",
       "js": "features/js-minify/script.js",
       "libs": ["https://cdn.jsdelivr.net/npm/terser@5.16.1/dist/bundle.min.js"]
     },
     {
       "id": "js-beautify",
+      "group": "format",
       "name": "JS Beautify",
       "icon": "✨",
+      "title": "JS Beautify Online - Định Dạng JavaScript",
+      "desc": "Định dạng lại mã JavaScript cho dễ đọc.",
+      "keywords": "javascript js beautify format dinh dang",
       "html": "features/js-beautify/index.html",
       "js": "features/js-beautify/script.js",
       "libs": ["https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify.min.js"]
     },
     {
       "id": "css-minify",
+      "group": "format",
       "name": "CSS Minify",
       "icon": "🎨",
+      "title": "CSS Minify Online - Nén CSS",
+      "desc": "Nén mã CSS bằng CleanCSS để giảm dung lượng file.",
+      "keywords": "css minify nen cleancss",
       "html": "features/css-minify/index.html",
       "js": "features/css-minify/script.js",
       "libs": ["https://cdn.jsdelivr.net/npm/clean-css@5.3.2/dist/clean-css.min.js"]
     },
     {
       "id": "css-beautify",
+      "group": "format",
       "name": "CSS Beautify",
       "icon": "💅",
+      "title": "CSS Beautify Online - Định Dạng CSS",
+      "desc": "Định dạng lại mã CSS cho dễ đọc.",
+      "keywords": "css beautify format dinh dang",
       "html": "features/css-beautify/index.html",
       "js": "features/css-beautify/script.js",
       "libs": ["https://cdn.jsdelivr.net/npm/js-beautify@1.14.7/js/lib/beautify-css.min.js"]
+    },
+    {
+      "id": "text-formatter",
+      "group": "utility",
+      "name": "Text Formatter",
+      "icon": "✏️",
+      "title": "Text Formatter Online - Định Dạng Văn Bản",
+      "desc": "Viết hoa chữ đầu, đảo hoa/thường, lấy chữ cái đầu, ngắt dòng theo độ dài.",
+      "keywords": "text formatter van ban viet hoa capitalize swap case wrap",
+      "html": "features/text-formatter/index.html",
+      "js": "features/text-formatter/script.js"
+    },
+    {
+      "id": "random-generator",
+      "group": "utility",
+      "name": "Random Generator",
+      "icon": "🎲",
+      "title": "Random Generator Online - Tạo Mật Khẩu, UUID, Chuỗi Ngẫu Nhiên",
+      "desc": "Tạo mật khẩu, UUID, chuỗi chữ, số, hex ngẫu nhiên bằng bộ sinh số an toàn của trình duyệt.",
+      "keywords": "random ngau nhien password mat khau uuid hex",
+      "html": "features/random-generator/index.html",
+      "js": "features/random-generator/script.js"
     }
-  ],
-  "sharedLibs": {
-    "escape": "js/escape-utils.js"
-  }
+  ]
 }

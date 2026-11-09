@@ -1,0 +1,30 @@
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="b64-input">Nội dung</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="b64-input" data-role="input" rows="8" spellcheck="false" placeholder="Nhập văn bản để mã hóa, hoặc chuỗi Base64 để giải mã..."></textarea>
+    </div>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="encode">Mã hóa (Encode)</button>
+        <button type="button" class="btn btn-outline" data-action="decode">Giải mã (Decode)</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+    </div>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="b64-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="b64-output" data-role="output" rows="8" readonly spellcheck="false"></textarea>
+    </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để mã hóa nhanh. Khi giải mã, chuỗi dạng URL-safe (<code>-</code>, <code>_</code>) và thiếu dấu <code>=</code> cũng được chấp nhận.</p>
+</div>

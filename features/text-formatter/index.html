@@ -1,32 +1,39 @@
-<div class="card">
-    <h3>Text Formatter - Định Dạng Văn Bản</h3>
-    <div class="form-group">
-        <label for="text-input">Nhập văn bản:</label>
-        <textarea id="text-input" rows="6" placeholder="Nhập văn bản cần xử lý..."></textarea>
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="text-input">Văn bản</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="text-input" data-role="input" rows="8" placeholder="Nhập văn bản cần xử lý..."></textarea>
     </div>
-    
-    <div class="btn-group">
-        <button class="btn" onclick="capitalizeText()">📝 Capitalize</button>
-        <button class="btn" onclick="capitalizeFullyText()">🔠 Capitalize Fully</button>
-        <button class="btn" onclick="uncapitalizeText()">🔡 Uncapitalize</button>
-        <button class="btn" onclick="swapCaseText()">🔄 Swap Case</button>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="capitalize" title="Capitalize">Viết hoa chữ đầu</button>
+        <button type="button" class="btn btn-outline" data-action="capitalizeFully" title="Capitalize Fully">Viết hoa chữ đầu, còn lại thường</button>
+        <button type="button" class="btn btn-outline" data-action="uncapitalize" title="Uncapitalize">Viết thường chữ đầu</button>
+        <button type="button" class="btn btn-outline" data-action="swapCase" title="Swap Case">Đảo hoa/thường</button>
+        <button type="button" class="btn btn-outline" data-action="initials" title="Initials">Lấy chữ cái đầu</button>
     </div>
-    
-    <div class="btn-group" style="margin-top: 8px;">
-        <button class="btn" onclick="getInitials()">🎯 Initials</button>
-        <button class="btn" onclick="wrapText()">📏 Word Wrap</button>
-        <button class="btn btn-secondary" onclick="clearTextFormatter()">🗑️ Clear</button>
+
+    <div class="tool-actions">
+        <button type="button" class="btn btn-outline" data-action="wrap" title="Word Wrap">Ngắt dòng</button>
+        <label class="inline-field">
+            Độ dài mỗi dòng
+            <input type="number" data-option="wrap-length" value="80" min="10" max="200">
+        </label>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
     </div>
-    
-    <div class="form-group" id="wrap-options" style="display:none; margin-top: 16px;">
-        <label for="wrap-length">Độ dài dòng:</label>
-        <input type="number" id="wrap-length" value="80" min="10" max="200" style="width: 100px; padding: 8px; border: 1px solid #ddd; border-radius: 4px;">
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="text-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="text-output" data-role="output" rows="8" readonly></textarea>
     </div>
-    
-    <div class="form-group">
-        <label for="text-output">Kết quả:</label>
-        <textarea id="text-output" rows="6" readonly></textarea>
-    </div>
-    
-    <button class="btn btn-success" onclick="copyTextResult()">📋 Copy Kết Quả</button>
 </div>

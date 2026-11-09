@@ -93,6 +93,11 @@ const EscapeUtils = {
         return str.replace(/'/g, "''");
     },
 
+    unescapeSql(str) {
+        if (!str) return '';
+        return str.replace(/''/g, "'");
+    },
+
     // CSV escape
     escapeCsv(str) {
         if (!str) return '';

@@ -1,0 +1,30 @@
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="escape-input">Nội dung</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="escape-input" data-role="input" rows="8" spellcheck="false"></textarea>
+    </div>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="escape">Escape</button>
+        <button type="button" class="btn btn-outline" data-action="unescape">Unescape</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+    </div>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="escape-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="escape-output" data-role="output" rows="8" readonly spellcheck="false"></textarea>
+    </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> trong ô nội dung để Escape nhanh.</p>
+</div>

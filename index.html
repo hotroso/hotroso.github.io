@@ -106,8 +106,18 @@
     <!-- Google Search Console: dán thẻ xác minh (nếu chọn cách "HTML tag") vào đây:
          <meta name="google-site-verification" content="MÃ_CỦA_BẠN"> -->
 
+    <!-- Áp dụng giao diện sáng/tối trước khi vẽ trang để tránh nháy màu -->
+    <meta name="color-scheme" content="light dark">
+    <script>
+        try {
+            var t = localStorage.getItem('theme');
+            if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.dataset.theme = t;
+        } catch (e) { document.documentElement.dataset.theme = 'light'; }
+    </script>
+
     <!-- Theme Color -->
-    <meta name="theme-color" content="#3498db">
+    <meta name="theme-color" content="#1e293b">
     <meta name="msapplication-TileColor" content="#3498db">
     
     <link rel="stylesheet" href="css/style.css">
@@ -115,9 +125,9 @@
 <body>
     <div class="container">
         <div class="sidebar-overlay" id="sidebar-overlay" onclick="toggleSidebar()"></div>
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
-                <a class="brand" href="#" onclick="location.hash=''; return false;">DevTools</a>
+                <a class="brand" href="#">DevTools</a>
                 <p class="tagline">Công cụ tiện ích</p>
             </div>
             <div class="sidebar-search">
@@ -131,8 +141,11 @@
 
         <main class="main-content">
             <header class="header">
-                <button class="menu-toggle" id="menu-toggle" onclick="toggleSidebar()" aria-label="Mở menu công cụ">☰</button>
+                <button class="menu-toggle" id="menu-toggle" type="button" onclick="toggleSidebar()" aria-label="Mở menu công cụ" aria-controls="sidebar" aria-expanded="false">☰</button>
                 <h2 id="page-title">Trang chủ</h2>
+                <div class="header-actions">
+                    <button class="icon-btn" id="theme-toggle" type="button" aria-label="Chuyển sang giao diện tối" title="Chuyển sang giao diện tối">🌙</button>
+                </div>
             </header>
 
             <div class="content" id="content">
@@ -149,8 +162,8 @@
                         </div>
                         <div class="feature-card">
                             <span class="icon">📁</span>
-                            <h3>QR Scanner</h3>
-                            <p>Đọc và giải mã QR code từ file ảnh. Xử lý hàng loạt, xuất kết quả nhanh chóng.</p>
+                            <h3>QR Files</h3>
+                            <p>Quét chuỗi mã QR bằng camera để nhận lại file được truyền qua QR.</p>
                         </div>
                         <div class="feature-card">
                             <span class="icon">🔐</span>
@@ -202,6 +215,7 @@
     <script>window.GA_SPA = true;</script>
     <script src="js/analytics.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

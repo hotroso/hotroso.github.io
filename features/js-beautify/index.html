@@ -1,20 +1,37 @@
-<div class="card">
-    <h3>✨ JS Beautify - Định Dạng JavaScript</h3>
-    
-    <div class="form-group">
-        <label for="js-beautify-input">Nhập JavaScript code:</label>
-        <textarea id="js-beautify-input" rows="12" placeholder="function hello(){console.log('Hello');}"></textarea>
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="js-beautify-input">Mã JavaScript</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="js-beautify-input" data-role="input" rows="12" spellcheck="false" placeholder="function xinChao(ten){console.log('Xin chào '+ten)}"></textarea>
     </div>
-    
-    <button class="btn" onclick="beautifyJS()">✨ Beautify JavaScript</button>
-    
-    <div class="form-group">
-        <label for="js-beautify-output">Kết quả beautified:</label>
-        <textarea id="js-beautify-output" rows="12" readonly></textarea>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="beautify">Định dạng JavaScript</button>
+        <label class="inline-field">
+            Thụt lề
+            <select data-option="indent">
+                <option value="2">2 dấu cách</option>
+                <option value="4">4 dấu cách</option>
+                <option value="tab">Tab</option>
+            </select>
+        </label>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
     </div>
-    
-    <div class="btn-group">
-        <button class="btn btn-success" onclick="copyJSBeautifyResult()">📋 Copy</button>
-        <button class="btn btn-secondary" onclick="clearJSBeautify()">🗑️ Clear</button>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="js-beautify-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="js-beautify-output" data-role="output" rows="12" readonly spellcheck="false"></textarea>
     </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để định dạng nhanh.</p>
 </div>

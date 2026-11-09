@@ -1,28 +1,18 @@
-const jsBeautifyInput = document.getElementById('js-beautify-input');
-const jsBeautifyOutput = document.getElementById('js-beautify-output');
+// JS Beautify (js-beautify)
+(function () {
+    const indentOptions = (root) => {
+        const v = root.querySelector('[data-option="indent"]').value;
+        return v === 'tab' ? { indent_with_tabs: true } : { indent_size: Number(v) };
+    };
 
-function beautifyJS() {
-    const code = jsBeautifyInput.value.trim();
-    if (!code) return;
-    
-    try {
-        const beautified = js_beautify(code, {
-            indent_size: 2,
-            space_in_empty_paren: true
-        });
-        jsBeautifyOutput.value = beautified;
-    } catch (e) {
-        alert('Lỗi: ' + e.message);
-    }
-}
-
-function clearJSBeautify() {
-    jsBeautifyInput.value = '';
-    jsBeautifyOutput.value = '';
-}
-
-function copyJSBeautifyResult() {
-    jsBeautifyOutput.select();
-    document.execCommand('copy');
-    alert('Đã copy!');
-}
+    Tools.register('js-beautify', {
+        init(root) {
+            UI.transformTool(root, {
+                example: "function tinhTong(a){let t=0;for(const s of a){t+=s}return t}console.log(tinhTong([1,2,3]));",
+                actions: {
+                    beautify: (v, r) => js_beautify(v, { ...indentOptions(r), space_in_empty_paren: true })
+                }
+            });
+        }
+    });
+})();

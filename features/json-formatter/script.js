@@ -1,107 +1,35 @@
-const jsonInput = document.getElementById('json-input');
-const jsonOutput = document.getElementById('json-output');
-const jsonError = document.getElementById('json-error');
-
-function showError(message) {
-    jsonError.textContent = '❌ ' + message;
-    jsonError.style.display = 'block';
-}
-
-function hideError() {
-    jsonError.style.display = 'none';
-}
-
-function formatJSON() {
-    hideError();
-    const text = jsonInput.value.trim();
-    if (!text) return;
-    
-    try {
-        const obj = JSON.parse(text);
-        jsonOutput.value = JSON.stringify(obj, null, 2);
-    } catch (e) {
-        showError('JSON không hợp lệ: ' + e.message);
+// JSON Formatter: format, minify, validate, escape, unescape
+(function () {
+    function parse(text) {
+        try {
+            return JSON.parse(text);
+        } catch (e) {
+            throw new Error('JSON không hợp lệ: ' + e.message);
+        }
     }
-}
 
-function minifyJSON() {
-    hideError();
-    const text = jsonInput.value.trim();
-    if (!text) return;
-    
-    try {
-        const obj = JSON.parse(text);
-        jsonOutput.value = JSON.stringify(obj);
-    } catch (e) {
-        showError('JSON không hợp lệ: ' + e.message);
-    }
-}
-
-function escapeJSON() {
-    hideError();
-    const text = jsonInput.value;
-    if (!text) return;
-    
-    let result = text
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"')
-        .replace(/\//g, '\\/')
-        .replace(/\n/g, '\\n')
-        .replace(/\r/g, '\\r')
-        .replace(/\t/g, '\\t')
-        .replace(/\b/g, '\\b')
-        .replace(/\f/g, '\\f');
-    
-    jsonOutput.value = result;
-}
-
-function unescapeJSON() {
-    hideError();
-    const text = jsonInput.value;
-    if (!text) return;
-    
-    try {
-        let result = text
-            .replace(/\\n/g, '\n')
-            .replace(/\\r/g, '\r')
-            .replace(/\\t/g, '\t')
-            .replace(/\\b/g, '\b')
-            .replace(/\\f/g, '\f')
-            .replace(/\\"/g, '"')
-            .replace(/\\\//g, '/')
-            .replace(/\\\\/g, '\\');
-        
-        jsonOutput.value = result;
-    } catch (e) {
-        showError('Lỗi unescape: ' + e.message);
-    }
-}
-
-function validateJSON() {
-    hideError();
-    const text = jsonInput.value.trim();
-    if (!text) {
-        showError('Vui lòng nhập JSON');
-        return;
-    }
-    
-    try {
-        JSON.parse(text);
-        jsonOutput.value = '✅ JSON hợp lệ!';
-    } catch (e) {
-        showError('JSON không hợp lệ: ' + e.message);
-        jsonOutput.value = '';
-    }
-}
-
-function clearJSON() {
-    jsonInput.value = '';
-    jsonOutput.value = '';
-    hideError();
-}
-
-function copyJSONResult() {
-    jsonOutput.select();
-    document.execCommand('copy');
-    alert('Đã copy kết quả!');
-}
+    Tools.register('json-formatter', {
+        init(root) {
+            UI.transformTool(root, {
+                example: '{"ten":"Nguyễn Văn A","tuoi":30,"ky_nang":["JavaScript","SQL"],"dang_lam_viec":true}',
+                actions: {
+                    format: v => JSON.stringify(parse(v), null, 2),
+                    minify: v => JSON.stringify(parse(v)),
+                    validate: v => {
+                        parse(v);
+                        return { message: 'JSON hợp lệ' };
+                    },
+                    // Chuyển văn bản thành nội dung chuỗi JSON (không gồm dấu nháy bao ngoài)
+                    escape: v => JSON.stringify(v).slice(1, -1),
+                    unescape: v => {
+                        try {
+                            return JSON.parse('"' + v + '"');
+                        } catch {
+                            throw new Error('Không unescape được: chuỗi có dấu " chưa escape hoặc ký tự \\ sai định dạng.');
+                        }
+                    }
+                }
+            });
+        }
+    });
+})();

@@ -1,35 +1,28 @@
-const jsMinifyInput = document.getElementById('js-minify-input');
-const jsMinifyOutput = document.getElementById('js-minify-output');
-const jsMinifyError = document.getElementById('js-minify-error');
+// JS Minify (Terser)
+(function () {
+    const savedMessage = (before, after) => {
+        const pct = before ? Math.round((1 - after / before) * 100) : 0;
+        return `Đã nén: ${before.toLocaleString('vi-VN')} → ${after.toLocaleString('vi-VN')} ký tự (giảm ${pct}%)`;
+    };
 
-async function minifyJS() {
-    const code = jsMinifyInput.value.trim();
-    if (!code) return;
-    
-    jsMinifyError.style.display = 'none';
-    
-    try {
-        const result = await Terser.minify(code);
-        if (result.error) {
-            jsMinifyError.textContent = '❌ ' + result.error;
-            jsMinifyError.style.display = 'block';
-        } else {
-            jsMinifyOutput.value = result.code;
+    Tools.register('js-minify', {
+        init(root) {
+            UI.transformTool(root, {
+                example: 'function tinhTong(danhSach) {\n    // Cộng tất cả phần tử\n    let tong = 0;\n    for (const so of danhSach) {\n        tong += so;\n    }\n    return tong;\n}\nconsole.log(tinhTong([1, 2, 3]));',
+                actions: {
+                    minify: async v => {
+                        let result;
+                        try {
+                            result = await Terser.minify(v);
+                        } catch (e) {
+                            const where = e.line ? ` (dòng ${e.line}, cột ${e.col})` : '';
+                            throw new Error('Lỗi cú pháp' + where + ': ' + e.message);
+                        }
+                        if (result.error) throw new Error(String(result.error));
+                        return { output: result.code, message: savedMessage(v.length, result.code.length) };
+                    }
+                }
+            });
         }
-    } catch (e) {
-        jsMinifyError.textContent = '❌ Lỗi: ' + e.message;
-        jsMinifyError.style.display = 'block';
-    }
-}
-
-function clearJSMinify() {
-    jsMinifyInput.value = '';
-    jsMinifyOutput.value = '';
-    jsMinifyError.style.display = 'none';
-}
-
-function copyJSMinifyResult() {
-    jsMinifyOutput.select();
-    document.execCommand('copy');
-    alert('Đã copy!');
-}
+    });
+})();

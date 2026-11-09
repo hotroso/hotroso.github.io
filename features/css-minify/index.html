@@ -1,20 +1,29 @@
-<div class="card">
-    <h3>🎨 CSS Minify - Nén CSS</h3>
-    
-    <div class="form-group">
-        <label for="css-minify-input">Nhập CSS code:</label>
-        <textarea id="css-minify-input" rows="12" placeholder="body { margin: 0; padding: 0; }"></textarea>
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="css-minify-input">Mã CSS</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="css-minify-input" data-role="input" rows="12" spellcheck="false" placeholder=".nut-bam { color: #ffffff; padding: 10px 20px; }"></textarea>
     </div>
-    
-    <button class="btn" onclick="minifyCSS()">🎨 Minify CSS</button>
-    
-    <div class="form-group">
-        <label for="css-minify-output">Kết quả minified:</label>
-        <textarea id="css-minify-output" rows="12" readonly></textarea>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="minify">Nén CSS</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
     </div>
-    
-    <div class="btn-group">
-        <button class="btn btn-success" onclick="copyCSSMinifyResult()">📋 Copy</button>
-        <button class="btn btn-secondary" onclick="clearCSSMinify()">🗑️ Clear</button>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="css-minify-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="css-minify-output" data-role="output" rows="12" readonly spellcheck="false"></textarea>
     </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để nén nhanh.</p>
 </div>

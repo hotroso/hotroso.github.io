@@ -1,17 +1,27 @@
-<div class="card">
-    <form id="qr-generation-form">
-        <div class="form-group">
-            <label for="qr-content">Nhập nội dung QR Code</label>
-            <textarea id="qr-content" rows="6" placeholder="Nhập văn bản, URL hoặc dữ liệu bạn muốn chuyển thành QR code..." autocomplete="off"></textarea>
-            <div class="char-count">Tổng số ký tự: <span id="countchars">0</span></div>
+<div class="card tool">
+    <form id="qr-generation-form" novalidate>
+        <div class="field">
+            <div class="field-head">
+                <label for="qr-content">Nội dung QR Code</label>
+                <span class="field-meta"><span id="countchars">0</span> ký tự</span>
+            </div>
+            <textarea id="qr-content" rows="6" placeholder="Nhập văn bản, đường link hoặc dữ liệu muốn chuyển thành mã QR..." autocomplete="off"></textarea>
         </div>
-        <button type="submit" class="btn">Tạo QR Code</button>
+        <div class="tool-actions">
+            <button type="submit" class="btn">Tạo QR Code</button>
+            <button type="button" class="btn btn-outline" id="qr-download" hidden>⬇️ Tải ảnh PNG</button>
+            <span class="spacer"></span>
+            <button type="button" class="btn btn-ghost" id="qr-example">Thử ví dụ</button>
+            <button type="button" class="btn btn-ghost" id="qr-clear">Xóa</button>
+        </div>
+        <p class="tool-error" id="qr-error" role="alert" hidden></p>
     </form>
-    <div id="qr-code"></div>
+    <div id="qr-code" aria-live="polite" hidden></div>
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để tạo nhanh. Nên giữ nội dung dưới 1.000 ký tự để mã QR dễ quét.</p>
 </div>
 
-<div id="qr-scan-list" class="card" style="display:none">
-    <h3>Lịch sử QR của bạn</h3>
+<div id="qr-scan-list" class="card" hidden>
+    <h3 class="card-title">Lịch sử QR của bạn</h3>
     <div id="scan-table-wrap"></div>
     <div id="scan-pagination" class="pagination"></div>
 </div>

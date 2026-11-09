@@ -1,22 +1,29 @@
-<div class="card">
-    <h3>📦 JS Minify - Nén JavaScript</h3>
-    
-    <div class="form-group">
-        <label for="js-minify-input">Nhập JavaScript code:</label>
-        <textarea id="js-minify-input" rows="12" placeholder="function hello() { console.log('Hello World'); }"></textarea>
+<div class="card tool">
+    <div class="field">
+        <div class="field-head">
+            <label for="js-minify-input">Mã JavaScript</label>
+            <span class="field-meta" data-count="input"></span>
+        </div>
+        <textarea id="js-minify-input" data-role="input" rows="12" spellcheck="false" placeholder="function xinChao(ten) { console.log('Xin chào ' + ten); }"></textarea>
     </div>
-    
-    <button class="btn" onclick="minifyJS()">📦 Minify JavaScript</button>
-    
-    <div class="form-group">
-        <label for="js-minify-output">Kết quả minified:</label>
-        <textarea id="js-minify-output" rows="12" readonly></textarea>
+
+    <div class="tool-actions">
+        <button type="button" class="btn" data-action="minify">Nén JavaScript</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
     </div>
-    
-    <div id="js-minify-error" style="display:none; padding: 12px; background: #fee; border: 1px solid #fcc; border-radius: 4px; color: #c00; margin-top: 12px;"></div>
-    
-    <div class="btn-group">
-        <button class="btn btn-success" onclick="copyJSMinifyResult()">📋 Copy</button>
-        <button class="btn btn-secondary" onclick="clearJSMinify()">🗑️ Clear</button>
+
+    <p class="tool-error" data-role="error" role="alert" hidden></p>
+
+    <div class="field">
+        <div class="field-head">
+            <label for="js-minify-output">Kết quả</label>
+            <span class="field-meta" data-count="output"></span>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+        </div>
+        <textarea id="js-minify-output" data-role="output" rows="12" readonly spellcheck="false"></textarea>
     </div>
+
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để nén nhanh.</p>
 </div>
