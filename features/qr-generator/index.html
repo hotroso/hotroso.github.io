@@ -3,9 +3,18 @@
         <div class="field">
             <div class="field-head">
                 <label for="qr-content">Nội dung QR Code</label>
-                <span class="field-meta"><span id="countchars">0</span> ký tự</span>
+                <span class="field-meta"><span id="countchars">0</span> ký tự · <span id="byte-estimate">~0 byte</span></span>
             </div>
             <textarea id="qr-content" rows="6" placeholder="Nhập văn bản, đường link hoặc dữ liệu muốn chuyển thành mã QR..." autocomplete="off"></textarea>
+        </div>
+        <div class="field field-inline">
+            <label for="qr-ec-level">Mức sửa lỗi</label>
+            <select id="qr-ec-level" title="Mức sửa lỗi càng cao thì mã QR càng dày và dung lượng càng thấp, nhưng dễ quét khi bị bẩn/hỏng">
+                <option value="L">L – Thấp (~7%, dung lượng cao)</option>
+                <option value="M" selected>M – Trung bình (~15%, khuyến nghị)</option>
+                <option value="Q">Q – Cao (~25%)</option>
+                <option value="H">H – Rất cao (~30%, dung lượng thấp nhất)</option>
+            </select>
         </div>
         <div class="tool-actions">
             <button type="submit" class="btn">Tạo QR Code</button>
@@ -17,7 +26,7 @@
         <p class="tool-error" id="qr-error" role="alert" hidden></p>
     </form>
     <div id="qr-code" aria-live="polite" hidden></div>
-    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để tạo nhanh. Nên giữ nội dung dưới 1.000 ký tự để mã QR dễ quét.</p>
+    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để tạo nhanh. Nên giữ nội dung dưới ~800–1.000 ký tự (tùy mức sửa lỗi) để mã QR dễ quét. Mức M là lựa chọn tốt nhất cho hầu hết trường hợp.</p>
 </div>
 
 <div id="qr-scan-list" class="card" hidden>
