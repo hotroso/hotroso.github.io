@@ -1,41 +1,41 @@
 /* ==========================================================================
-   DevTools - giao diện chung
-   Màu sắc, bo góc, bóng đổ khai báo bằng biến CSS ở :root.
-   Giao diện tối ghi đè biến trong [data-theme="dark"].
+   DevTools – shared UI
+   Colors, radii, and shadows live in CSS variables on :root.
+   Dark theme overrides variables under [data-theme="dark"].
    ========================================================================== */
 
 :root {
-    --bg: #f4f6f9;
+    --bg: #f1f5f9;
     --surface: #ffffff;
-    --surface-2: #f7f8fa;
-    --border: #e2e6ea;
-    --border-strong: #cfd5dc;
-    --text: #1f2937;
-    --text-muted: #5f6b7a;
+    --surface-2: #f8fafc;
+    --border: #e2e8f0;
+    --border-strong: #cbd5e1;
+    --text: #0f172a;
+    --text-muted: #64748b;
 
-    --primary: #1f6feb;
-    --primary-hover: #1a5fd0;
-    --primary-soft: rgba(31, 111, 235, 0.1);
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-soft: rgba(59, 130, 246, 0.12);
     --on-primary: #ffffff;
 
-    --success: #15803d;
-    --danger: #c62828;
-    --danger-soft: #fdecec;
-    --warning: #9a5b00;
-    --warning-soft: #fff7e6;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --danger-soft: #fef2f2;
+    --warning: #d97706;
+    --warning-soft: #fffbeb;
 
-    --sidebar-bg: #1e293b;
+    --sidebar-bg: #0f172a;
     --sidebar-text: #e2e8f0;
     --sidebar-muted: #94a3b8;
     --sidebar-hover: rgba(255, 255, 255, 0.06);
-    --sidebar-active: rgba(96, 165, 250, 0.18);
+    --sidebar-active: rgba(59, 130, 246, 0.2);
     --sidebar-accent: #60a5fa;
     --sidebar-border: rgba(255, 255, 255, 0.08);
 
-    --radius: 10px;
-    --radius-sm: 6px;
-    --shadow: 0 1px 2px rgba(16, 24, 40, 0.05), 0 1px 3px rgba(16, 24, 40, 0.08);
-    --shadow-lg: 0 12px 32px rgba(16, 24, 40, 0.16);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06);
+    --shadow-lg: 0 16px 40px rgba(15, 23, 42, 0.12);
 
     --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     --font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
@@ -1040,4 +1040,40 @@ textarea[aria-invalid="true"] { border-color: var(--danger); }
         transition: none !important;
         animation: none !important;
     }
+}
+
+
+/* ── Home polish ─────────────────────────────────────────────────────────── */
+.welcome-section .hero {
+    margin-bottom: 28px;
+}
+.welcome-section .hero h1 {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text);
+}
+.welcome-section .lead {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 52rem;
+}
+.features-grid {
+    gap: 14px;
+}
+.feature-card {
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+.benefits li,
+.tool-list li {
+    margin-bottom: 6px;
+}
+.seo-content h2 {
+    margin-top: 28px;
+    margin-bottom: 12px;
+    font-size: 1.15rem;
 }

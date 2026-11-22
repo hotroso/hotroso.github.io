@@ -1,37 +1,37 @@
 <div class="card tool">
     <div class="field">
         <div class="field-head">
-            <label for="css-beautify-input">Mã CSS</label>
+            <label for="css-beautify-input">CSS</label>
             <span class="field-meta" data-count="input"></span>
         </div>
-        <textarea id="css-beautify-input" data-role="input" rows="12" spellcheck="false" placeholder=".nut-bam{color:#fff;padding:10px 20px}"></textarea>
+        <textarea id="css-beautify-input" data-role="input" rows="12" spellcheck="false" placeholder=".button{color:#fff;padding:10px 20px}"></textarea>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn" data-action="beautify">Định dạng CSS</button>
+        <button type="button" class="btn" data-action="beautify">Beautify CSS</button>
         <label class="inline-field">
-            Thụt lề
+            Indent
             <select data-option="indent">
-                <option value="2">2 dấu cách</option>
-                <option value="4">4 dấu cách</option>
+                <option value="2">2 spaces</option>
+                <option value="4">4 spaces</option>
                 <option value="tab">Tab</option>
             </select>
         </label>
         <span class="spacer"></span>
-        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
-        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+        <button type="button" class="btn btn-ghost" data-action="example">Try example</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Clear</button>
     </div>
 
     <p class="tool-error" data-role="error" role="alert" hidden></p>
 
     <div class="field">
         <div class="field-head">
-            <label for="css-beautify-output">Kết quả</label>
+            <label for="css-beautify-output">Result</label>
             <span class="field-meta" data-count="output"></span>
-            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Copy</button>
         </div>
         <textarea id="css-beautify-output" data-role="output" rows="12" readonly spellcheck="false"></textarea>
     </div>
 
-    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để định dạng nhanh.</p>
+    <p class="tool-hint">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to beautify quickly.</p>
 </div>

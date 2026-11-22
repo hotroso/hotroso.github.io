@@ -1,29 +1,29 @@
 <div class="card tool">
     <div class="field">
         <div class="field-head">
-            <label for="js-minify-input">Mã JavaScript</label>
+            <label for="js-minify-input">JavaScript</label>
             <span class="field-meta" data-count="input"></span>
         </div>
-        <textarea id="js-minify-input" data-role="input" rows="12" spellcheck="false" placeholder="function xinChao(ten) { console.log('Xin chào ' + ten); }"></textarea>
+        <textarea id="js-minify-input" data-role="input" rows="12" spellcheck="false" placeholder="function hello(name) { console.log('Hello ' + name); }"></textarea>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn" data-action="minify">Nén JavaScript</button>
+        <button type="button" class="btn" data-action="minify">Minify JavaScript</button>
         <span class="spacer"></span>
-        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
-        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+        <button type="button" class="btn btn-ghost" data-action="example">Try example</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Clear</button>
     </div>
 
     <p class="tool-error" data-role="error" role="alert" hidden></p>
 
     <div class="field">
         <div class="field-head">
-            <label for="js-minify-output">Kết quả</label>
+            <label for="js-minify-output">Result</label>
             <span class="field-meta" data-count="output"></span>
-            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Copy</button>
         </div>
         <textarea id="js-minify-output" data-role="output" rows="12" readonly spellcheck="false"></textarea>
     </div>
 
-    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để nén nhanh.</p>
+    <p class="tool-hint">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to minify quickly.</p>
 </div>

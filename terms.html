@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Điều khoản sử dụng - DevTools</title>
-    <meta name="author" content="Hỗ Trợ Giải Pháp Số">
-    <meta name="copyright" content="© 2026 Hỗ Trợ Giải Pháp Số (hotroso.github.io). Bảo lưu mọi quyền.">
+    <title>Terms of Use – DevTools</title>
+    <meta name="author" content="Digital Solutions Support">
+    <meta name="copyright" content="© 2026 Digital Solutions Support (hotroso.github.io). All rights reserved.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -26,7 +26,7 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            color: #3498db;
+            color: #3b82f6;
             text-decoration: none;
             font-size: 14px;
             margin-bottom: 32px;
@@ -34,7 +34,7 @@
         .back-link:hover { text-decoration: underline; }
 
         .hero {
-            background: linear-gradient(135deg, #2c3e50, #3498db);
+            background: linear-gradient(135deg, #0f172a, #3b82f6);
             border-radius: 16px;
             padding: 40px 40px 36px;
             color: white;
@@ -49,7 +49,7 @@
 
         .hero p {
             font-size: 14px;
-            opacity: 0.8;
+            opacity: 0.85;
         }
 
         .card {
@@ -63,7 +63,7 @@
         .card h2 {
             font-size: 17px;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #0f172a;
             margin-bottom: 14px;
             display: flex;
             align-items: center;
@@ -81,11 +81,11 @@
             flex-shrink: 0;
         }
 
-        .icon-blue   { background: #ebf5fb; }
-        .icon-green  { background: #eafaf1; }
-        .icon-orange { background: #fef9e7; }
-        .icon-red    { background: #fdedec; }
-        .icon-purple { background: #f4ecf7; }
+        .icon-blue   { background: #eff6ff; }
+        .icon-green  { background: #ecfdf5; }
+        .icon-orange { background: #fffbeb; }
+        .icon-red    { background: #fef2f2; }
+        .icon-purple { background: #f5f3ff; }
 
         .card p { font-size: 14px; color: #555; margin-bottom: 10px; }
         .card p:last-child { margin-bottom: 0; }
@@ -109,13 +109,13 @@
             content: '•';
             position: absolute;
             left: 6px;
-            color: #3498db;
+            color: #3b82f6;
             font-weight: 700;
         }
 
         .highlight {
-            background: #f8f9fa;
-            border-left: 3px solid #3498db;
+            background: #f8fafc;
+            border-left: 3px solid #3b82f6;
             border-radius: 0 8px 8px 0;
             padding: 12px 16px;
             font-size: 13px;
@@ -126,76 +126,77 @@
         .updated {
             text-align: center;
             font-size: 12px;
-            color: #aaa;
+            color: #94a3b8;
             margin-top: 40px;
         }
+        .updated a { color: #3b82f6; }
     </style>
 </head>
 <body>
     <div class="page">
-        <a href="/" class="back-link">← Quay lại DevTools</a>
+        <a href="/" class="back-link">← Back to DevTools</a>
 
         <div class="hero">
-            <h1>📋 Điều khoản sử dụng</h1>
-            <p>Vui lòng đọc kỹ trước khi tạo tài khoản và sử dụng dịch vụ.</p>
+            <h1>📋 Terms of Use</h1>
+            <p>Please read carefully before creating an account and using the service.</p>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-blue">📌</span> 1. Chấp nhận điều khoản</h2>
-            <p>Bằng việc tạo tài khoản và sử dụng DevTools, bạn xác nhận đã đọc, hiểu và đồng ý với toàn bộ các điều khoản dưới đây. Nếu không đồng ý, vui lòng không tạo tài khoản.</p>
+            <h2><span class="icon icon-blue">📌</span> 1. Acceptance of terms</h2>
+            <p>By creating an account and using DevTools, you confirm that you have read, understood, and agree to all of the terms below. If you do not agree, please do not create an account.</p>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-orange">📊</span> 2. Dữ liệu chúng tôi thu thập</h2>
-            <p>Khi bạn đăng ký tài khoản và sử dụng tính năng lưu trữ, hệ thống sẽ thu thập:</p>
+            <h2><span class="icon icon-orange">📊</span> 2. Data we collect</h2>
+            <p>When you register and use storage features, the system may collect:</p>
             <ul>
-                <li>Username và mật khẩu (được mã hóa bằng bcrypt)</li>
-                <li>Địa chỉ IP tại thời điểm sử dụng</li>
-                <li>User Agent (thông tin trình duyệt, hệ điều hành)</li>
-                <li>Nội dung QR code bạn tạo</li>
-                <li>Ngôn ngữ trình duyệt, độ phân giải màn hình, múi giờ</li>
-                <li>Thời gian thực hiện các thao tác</li>
+                <li>Username and password (hashed with bcrypt)</li>
+                <li>IP address at the time of use</li>
+                <li>User agent (browser and operating system)</li>
+                <li>QR content and related activity metadata for statistics</li>
             </ul>
-            <div class="highlight">Dữ liệu được sử dụng cho mục đích thống kê, cải thiện dịch vụ và theo dõi hoạt động bất thường.</div>
-            <p style="margin-top: 12px;">Ngoài ra, website sử dụng <strong>Google Analytics</strong> (qua Google Tag Manager) để thống kê lượt truy cập ẩn danh: trang được xem, nút được bấm, thiết bị và khu vực truy cập. Nội dung bạn nhập vào các công cụ <strong>không</strong> được gửi tới Google. Bạn có thể chặn thống kê bằng tiện ích chặn quảng cáo hoặc <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a>.</p>
+            <div class="highlight">
+                Most tools process data entirely in your browser. Content you type into tools is <strong>not</strong> uploaded unless you are signed in and use a feature that explicitly saves history (e.g. QR history).
+            </div>
+            <p style="margin-top:14px">We use <strong>Google Analytics</strong> (via Google Tag Manager) for anonymous traffic statistics: pages viewed, buttons clicked, device and region. Content you enter into tools is <strong>not</strong> sent to Google. You can opt out with an ad blocker or the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out</a>.</p>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-green">🔒</span> 3. Bảo mật dữ liệu</h2>
+            <h2><span class="icon icon-green">🔒</span> 3. Data security</h2>
             <ul>
-                <li>Mật khẩu được mã hóa một chiều bằng bcrypt, không thể giải mã</li>
-                <li>Dữ liệu được lưu trữ trên server bảo mật với kết nối HTTPS</li>
-                <li>Chúng tôi không bán hoặc chia sẻ dữ liệu cá nhân cho bên thứ ba</li>
-                <li>Truy cập API được xác thực bằng JWT token có thời hạn</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2><span class="icon icon-purple">⚙️</span> 4. Quyền của người dùng</h2>
-            <ul>
-                <li>Bạn có thể đăng xuất bất kỳ lúc nào để hủy phiên đăng nhập</li>
-                <li>Các tính năng không yêu cầu đăng nhập vẫn hoạt động bình thường khi không có tài khoản</li>
-                <li>Dữ liệu QR chỉ hiển thị cho chính tài khoản của bạn</li>
+                <li>Passwords are one-way hashed with bcrypt and cannot be reversed</li>
+                <li>Data is stored on secured servers over HTTPS</li>
+                <li>We do not sell or share personal data with third parties</li>
+                <li>API access is authenticated with time-limited JWT tokens</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-red">⚠️</span> 5. Giới hạn trách nhiệm</h2>
-            <p>DevTools là dịch vụ miễn phí, được cung cấp "nguyên trạng". Chúng tôi không chịu trách nhiệm về:</p>
+            <h2><span class="icon icon-purple">⚙️</span> 4. Your rights</h2>
             <ul>
-                <li>Gián đoạn dịch vụ do bảo trì hoặc sự cố kỹ thuật</li>
-                <li>Mất dữ liệu do sự cố ngoài tầm kiểm soát</li>
-                <li>Thiệt hại phát sinh từ việc sử dụng hoặc không thể sử dụng dịch vụ</li>
+                <li>You may sign out at any time to end your session</li>
+                <li>Features that do not require sign-in work normally without an account</li>
+                <li>Saved QR history is visible only to your own account</li>
             </ul>
         </div>
 
         <div class="card">
-            <h2><span class="icon icon-blue">🔄</span> 6. Thay đổi điều khoản</h2>
-            <p>Chúng tôi có quyền cập nhật điều khoản này bất kỳ lúc nào. Phiên bản mới nhất luôn được đăng tại trang này. Việc tiếp tục sử dụng dịch vụ sau khi điều khoản thay đổi đồng nghĩa với việc bạn chấp nhận điều khoản mới.</p>
+            <h2><span class="icon icon-red">⚠️</span> 5. Limitation of liability</h2>
+            <p>DevTools is a free service provided “as is”. We are not liable for:</p>
+            <ul>
+                <li>Service interruptions due to maintenance or technical issues</li>
+                <li>Data loss caused by events beyond our control</li>
+                <li>Damages arising from use of, or inability to use, the service</li>
+            </ul>
         </div>
 
-        <p class="updated">Cập nhật lần cuối: tháng 5, 2025</p>
-        <p class="updated">© 2026 · Một sản phẩm của <a href="https://hotroso.github.io/">Hỗ Trợ Giải Pháp Số</a> (hotroso.github.io). Bảo lưu mọi quyền.</p>
+        <div class="card">
+            <h2><span class="icon icon-blue">🔄</span> 6. Changes to these terms</h2>
+            <p>We may update these terms at any time. The latest version is always published on this page. Continued use of the service after changes means you accept the new terms.</p>
+        </div>
+
+        <p class="updated">Last updated: May 2025</p>
+        <p class="updated">© 2026 · A product of <a href="https://hotroso.github.io/">Digital Solutions Support</a> (hotroso.github.io). All rights reserved.</p>
     </div>
 </body>
 </html>

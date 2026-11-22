@@ -7,7 +7,7 @@
     const searchInput = document.getElementById('sidebar-search');
     const metaDesc = document.querySelector('meta[name="description"]');
 
-    const HOME_TITLE = 'DevTools - Công Cụ Hỗ Trợ Lập Trình Viên Online Miễn Phí';
+    const HOME_TITLE = 'DevTools – Free Online Developer Tools';
     const HOME_DESC = metaDesc ? metaDesc.content : '';
     const RECENT_KEY = 'recent_tools';
     const RECENT_MAX = 4;
@@ -50,7 +50,7 @@
             script.onerror = () => {
                 loadedScripts.delete(url);
                 script.remove();
-                reject(new Error('Không tải được ' + url));
+                reject(new Error('Failed to load ' + url));
             };
             document.body.appendChild(script);
         });
@@ -70,7 +70,7 @@
 
     const addRecent = (id) => {
         const list = [id, ...getRecent().filter(x => x !== id)].slice(0, RECENT_MAX);
-        try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch { /* bỏ qua */ }
+        try { localStorage.setItem(RECENT_KEY, JSON.stringify(list)); } catch { /* ignore */ }
         renderRecent();
     };
 
@@ -85,8 +85,8 @@
         menuItemHTML(f.id, f.icon, f.name, `#${f.id}`, normalize(`${f.name} ${f.id} ${f.keywords || ''}`));
 
     const buildMenu = () => {
-        let html = menuItemHTML('home', '🏠', 'Trang chủ', '#', normalize('trang chu home'));
-        html += '<div class="menu-group" data-group="recent" hidden><div class="menu-group-title">Gần đây</div><div class="menu-group-items"></div></div>';
+        let html = menuItemHTML('home', '🏠', 'Home', '#', normalize('home'));
+        html += '<div class="menu-group" data-group="recent" hidden><div class="menu-group-title">Recent</div><div class="menu-group-items"></div></div>';
         groups.forEach(g => {
             const items = features.filter(f => f.group === g.id);
             if (!items.length) return;
@@ -95,7 +95,7 @@
                 <div class="menu-group-items">${items.map(featureItemHTML).join('')}</div>
             </div>`;
         });
-        html += '<p class="menu-empty" hidden>Không tìm thấy công cụ phù hợp</p>';
+        html += '<p class="menu-empty" hidden>No matching tools found</p>';
         sidebarMenu.innerHTML = html;
         renderRecent();
 
@@ -229,7 +229,7 @@
 
         currentFeature = 'home';
         setActiveMenu('home');
-        pageTitle.textContent = 'Trang chủ';
+        pageTitle.textContent = 'Home';
         document.title = HOME_TITLE;
         if (metaDesc) metaDesc.content = HOME_DESC;
         if (location.hash) history.replaceState(null, '', location.pathname + location.search);
@@ -239,8 +239,8 @@
 
     const showLoadError = (feature) => {
         contentArea.innerHTML = `<div class="card load-error" role="alert">
-            <p>Không tải được công cụ <strong>${esc(feature.name)}</strong>. Vui lòng kiểm tra kết nối mạng.</p>
-            <button type="button" class="btn" data-retry>Thử lại</button>
+            <p>Failed to load tool <strong>${esc(feature.name)}</strong>. Please check your network connection.</p>
+            <button type="button" class="btn" data-retry>Retry</button>
         </div>`;
         contentArea.querySelector('[data-retry]').addEventListener('click', () => switchFeature(feature.id));
     };
@@ -284,7 +284,7 @@
                 cleanup = typeof result === 'function' ? result : null;
             } catch (e) {
                 console.error(e);
-                UI.toast('Công cụ gặp lỗi khi khởi động', 'error');
+                UI.toast('Tool failed to start', 'error');
             }
         }
 
@@ -306,7 +306,7 @@
         } catch (e) {
             console.error(e);
             contentArea.insertAdjacentHTML('afterbegin',
-                '<div class="card load-error" role="alert">Không tải được danh sách công cụ. Vui lòng tải lại trang.</div>');
+                '<div class="card load-error" role="alert">Could not load the tool list. Please reload the page.</div>');
             return;
         }
         features.forEach(f => (f.aliases || []).forEach(a => { aliases[a] = f.id; }));

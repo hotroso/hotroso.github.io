@@ -62,10 +62,10 @@
 
             const updateCount = () => {
                 const text = input.value;
-                countEl.textContent = text.length.toLocaleString('vi-VN');
+                countEl.textContent = text.length.toLocaleString('en-US');
                 if (byteEl) {
                     const bytes = estimateBytes(text);
-                    byteEl.textContent = '~' + bytes.toLocaleString('vi-VN') + ' byte';
+                    byteEl.textContent = '~' + bytes.toLocaleString('en-US') + ' byte';
                 }
             };
 
@@ -114,7 +114,7 @@
                         tryRender(text, level);
                         // Nếu phải hạ mức so với lựa chọn ban đầu → thông báo nhẹ
                         if (level !== preferredLevel) {
-                            setError(`Nội dung hơi dài với mức ${preferredLevel}, đã tự chuyển sang mức ${level} để tạo được mã QR.`);
+                            setError(`Content is a bit long for level ${preferredLevel}; switched to ${level} so the QR could be generated.`);
                         }
                         return level;
                     } catch (e) {
@@ -139,13 +139,13 @@
                 setError('');
                 const text = input.value.trim();
                 if (!text) {
-                    setError('Vui lòng nhập nội dung.');
+                    setError('Please enter some content.');
                     input.focus();
                     return;
                 }
 
                 if (typeof QRCode === 'undefined') {
-                    setError('Thư viện tạo QR chưa sẵn sàng. Vui lòng tải lại trang.');
+                    setError('QR library is not ready yet. Please reload the page.');
                     return;
                 }
 
@@ -155,7 +155,7 @@
                 // Cảnh báo sớm (không chặn hoàn toàn)
                 if (text.length > MAX_RECOMMENDED || bytes > 1200) {
                     const ok = confirm(
-                        `Nội dung khá dài (~${bytes} byte). Mã QR sẽ rất dày, có thể khó quét trên một số máy.\n\nVẫn tiếp tục?`
+                        `Content is quite long (~${bytes} bytes). The QR will be dense and may be hard to scan on some devices.\n\nContinue anyway?`
                     );
                     if (!ok) return;
                 }
@@ -167,10 +167,10 @@
                     downloadBtn.hidden = true;
                     const msg = (e && e.message) ? String(e.message) : '';
                     if (/too long data|code length overflow/i.test(msg)) {
-                        setError('Nội dung quá dài để tạo mã QR (kể cả ở mức sửa lỗi thấp nhất). Hãy rút ngắn và thử lại.');
+                        setError('Content is too long for a QR code (even at the lowest error level). Please shorten it and try again.');
                     } else {
                         console.warn('QR generate error:', e);
-                        setError('Không tạo được mã QR. Thử lại hoặc rút ngắn nội dung.');
+                        setError('Could not generate QR code. Try again or shorten the content.');
                     }
                     return;
                 }
@@ -229,7 +229,7 @@
                 } catch (e) {
                     console.warn('Load list failed', e);
                     if (!active) return;
-                    tableWrap.innerHTML = '<p class="text-danger">Không thể tải danh sách.</p>';
+                    tableWrap.innerHTML = '<p class="text-danger">Could not load the list.</p>';
                     pagination.innerHTML = '';
                 }
                 scanList.hidden = false;
@@ -237,12 +237,12 @@
 
             function renderTable(json) {
                 if (!json.data || json.data.length === 0) {
-                    tableWrap.innerHTML = '<p class="text-muted">Chưa có dữ liệu.</p>';
+                    tableWrap.innerHTML = '<p class="text-muted">No data yet.</p>';
                     pagination.innerHTML = '';
                     return;
                 }
                 tableWrap.innerHTML = `<div class="table-wrap"><table class="scan-table">
-                    <thead><tr><th>#</th><th>Nội dung QR</th><th>Thời gian</th></tr></thead>
+                    <thead><tr><th>#</th><th>QR content</th><th>Time</th></tr></thead>
                     <tbody>${json.data.map((r, i) => `<tr>
                         <td>${(currentPage - 1) * json.per_page + i + 1}</td>
                         <td class="qr-content-cell" title="${esc(r.qr_content)}">${esc(r.qr_content.length > 60 ? r.qr_content.slice(0, 60) + '…' : r.qr_content)}</td>

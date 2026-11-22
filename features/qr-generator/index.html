@@ -2,35 +2,35 @@
     <form id="qr-generation-form" novalidate>
         <div class="field">
             <div class="field-head">
-                <label for="qr-content">Nội dung QR Code</label>
-                <span class="field-meta"><span id="countchars">0</span> ký tự · <span id="byte-estimate">~0 byte</span></span>
+                <label for="qr-content">QR content</label>
+                <span class="field-meta"><span id="countchars">0</span> chars · <span id="byte-estimate">~0 bytes</span></span>
             </div>
-            <textarea id="qr-content" rows="6" placeholder="Nhập văn bản, đường link hoặc dữ liệu muốn chuyển thành mã QR..." autocomplete="off"></textarea>
+            <textarea id="qr-content" rows="6" placeholder="Enter text, a URL, or any data to encode as a QR code…" autocomplete="off"></textarea>
         </div>
         <div class="field field-inline">
-            <label for="qr-ec-level">Mức sửa lỗi</label>
-            <select id="qr-ec-level" title="Mức sửa lỗi càng cao thì mã QR càng dày và dung lượng càng thấp, nhưng dễ quét khi bị bẩn/hỏng">
-                <option value="L">L – Thấp (~7%, dung lượng cao)</option>
-                <option value="M" selected>M – Trung bình (~15%, khuyến nghị)</option>
-                <option value="Q">Q – Cao (~25%)</option>
-                <option value="H">H – Rất cao (~30%, dung lượng thấp nhất)</option>
+            <label for="qr-ec-level">Error correction</label>
+            <select id="qr-ec-level" title="Higher levels make denser codes with lower capacity, but they remain readable when damaged">
+                <option value="L">L – Low (~7%, highest capacity)</option>
+                <option value="M" selected>M – Medium (~15%, recommended)</option>
+                <option value="Q">Q – Quartile (~25%)</option>
+                <option value="H">H – High (~30%, lowest capacity)</option>
             </select>
         </div>
         <div class="tool-actions">
-            <button type="submit" class="btn">Tạo QR Code</button>
-            <button type="button" class="btn btn-outline" id="qr-download" hidden>⬇️ Tải ảnh PNG</button>
+            <button type="submit" class="btn">Generate QR Code</button>
+            <button type="button" class="btn btn-outline" id="qr-download" hidden>⬇️ Download PNG</button>
             <span class="spacer"></span>
-            <button type="button" class="btn btn-ghost" id="qr-example">Thử ví dụ</button>
-            <button type="button" class="btn btn-ghost" id="qr-clear">Xóa</button>
+            <button type="button" class="btn btn-ghost" id="qr-example">Try example</button>
+            <button type="button" class="btn btn-ghost" id="qr-clear">Clear</button>
         </div>
         <p class="tool-error" id="qr-error" role="alert" hidden></p>
     </form>
     <div id="qr-code" aria-live="polite" hidden></div>
-    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để tạo nhanh. Nên giữ nội dung dưới ~800–1.000 ký tự (tùy mức sửa lỗi) để mã QR dễ quét. Mức M là lựa chọn tốt nhất cho hầu hết trường hợp.</p>
+    <p class="tool-hint">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to generate quickly. Keep content under ~800–1,000 characters (depending on error level) for easy scanning. Level M is best for most cases.</p>
 </div>
 
 <div id="qr-scan-list" class="card" hidden>
-    <h3 class="card-title">Lịch sử QR của bạn</h3>
+    <h3 class="card-title">Your QR history</h3>
     <div id="scan-table-wrap"></div>
     <div id="scan-pagination" class="pagination"></div>
 </div>

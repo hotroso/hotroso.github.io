@@ -1,30 +1,30 @@
 <div class="card tool">
     <div class="field">
         <div class="field-head">
-            <label for="b64-input">Nội dung</label>
+            <label for="b64-input">Input</label>
             <span class="field-meta" data-count="input"></span>
         </div>
-        <textarea id="b64-input" data-role="input" rows="8" spellcheck="false" placeholder="Nhập văn bản để mã hóa, hoặc chuỗi Base64 để giải mã..."></textarea>
+        <textarea id="b64-input" data-role="input" rows="8" spellcheck="false" placeholder="Enter text to encode, or a Base64 string to decode…"></textarea>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn" data-action="encode">Mã hóa (Encode)</button>
-        <button type="button" class="btn btn-outline" data-action="decode">Giải mã (Decode)</button>
+        <button type="button" class="btn" data-action="encode">Encode</button>
+        <button type="button" class="btn btn-outline" data-action="decode">Decode</button>
         <span class="spacer"></span>
-        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
-        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+        <button type="button" class="btn btn-ghost" data-action="example">Try example</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Clear</button>
     </div>
 
     <p class="tool-error" data-role="error" role="alert" hidden></p>
 
     <div class="field">
         <div class="field-head">
-            <label for="b64-output">Kết quả</label>
+            <label for="b64-output">Result</label>
             <span class="field-meta" data-count="output"></span>
-            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Copy</button>
         </div>
         <textarea id="b64-output" data-role="output" rows="8" readonly spellcheck="false"></textarea>
     </div>
 
-    <p class="tool-hint">Mẹo: nhấn <kbd>Ctrl</kbd> + <kbd>Enter</kbd> để mã hóa nhanh. Khi giải mã, chuỗi dạng URL-safe (<code>-</code>, <code>_</code>) và thiếu dấu <code>=</code> cũng được chấp nhận.</p>
+    <p class="tool-hint">Tip: press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to encode quickly. URL-safe Base64 (<code>-</code>, <code>_</code>) and missing <code>=</code> padding are accepted when decoding.</p>
 </div>

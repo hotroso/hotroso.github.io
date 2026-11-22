@@ -1,11 +1,11 @@
 {
-  "name": "DevTools - 18+ Công Cụ Developer Online",
+  "name": "DevTools – Free Online Developer Tools",
   "short_name": "DevTools",
-  "description": "18+ công cụ chuyên nghiệp: QR Code, JSON, Base64, URL Encode/Decode, JS/CSS Minify/Beautify, Escape String, Text Formatter, Random Generator",
+  "description": "18+ professional tools: QR Code, JSON, Base64, URL Encode/Decode, JS/CSS Minify/Beautify, Escape String, Text Formatter, Random Generator",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#3498db",
+  "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -16,6 +16,6 @@
     }
   ],
   "categories": ["utilities", "productivity", "developer tools"],
-  "lang": "vi",
+  "lang": "en",
   "dir": "ltr"
 }

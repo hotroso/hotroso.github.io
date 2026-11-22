@@ -1,38 +1,38 @@
 <div class="card tool">
     <div class="field">
         <div class="field-head">
-            <label for="text-input">Văn bản</label>
+            <label for="text-input">Text</label>
             <span class="field-meta" data-count="input"></span>
         </div>
-        <textarea id="text-input" data-role="input" rows="8" placeholder="Nhập văn bản cần xử lý..."></textarea>
+        <textarea id="text-input" data-role="input" rows="8" placeholder="Enter text to process…"></textarea>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn" data-action="capitalize" title="Capitalize">Viết hoa chữ đầu</button>
-        <button type="button" class="btn btn-outline" data-action="capitalizeFully" title="Capitalize Fully">Viết hoa chữ đầu, còn lại thường</button>
-        <button type="button" class="btn btn-outline" data-action="uncapitalize" title="Uncapitalize">Viết thường chữ đầu</button>
-        <button type="button" class="btn btn-outline" data-action="swapCase" title="Swap Case">Đảo hoa/thường</button>
-        <button type="button" class="btn btn-outline" data-action="initials" title="Initials">Lấy chữ cái đầu</button>
+        <button type="button" class="btn" data-action="capitalize" title="Capitalize">Capitalize</button>
+        <button type="button" class="btn btn-outline" data-action="capitalizeFully" title="Capitalize Fully">Title Case</button>
+        <button type="button" class="btn btn-outline" data-action="uncapitalize" title="Uncapitalize">Lower first</button>
+        <button type="button" class="btn btn-outline" data-action="swapCase" title="Swap Case">Swap case</button>
+        <button type="button" class="btn btn-outline" data-action="initials" title="Initials">Initials</button>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn btn-outline" data-action="wrap" title="Word Wrap">Ngắt dòng</button>
+        <button type="button" class="btn btn-outline" data-action="wrap" title="Word Wrap">Word wrap</button>
         <label class="inline-field">
-            Độ dài mỗi dòng
+            Line length
             <input type="number" data-option="wrap-length" value="80" min="10" max="200">
         </label>
         <span class="spacer"></span>
-        <button type="button" class="btn btn-ghost" data-action="example">Thử ví dụ</button>
-        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+        <button type="button" class="btn btn-ghost" data-action="example">Try example</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Clear</button>
     </div>
 
     <p class="tool-error" data-role="error" role="alert" hidden></p>
 
     <div class="field">
         <div class="field-head">
-            <label for="text-output">Kết quả</label>
+            <label for="text-output">Result</label>
             <span class="field-meta" data-count="output"></span>
-            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Copy</button>
         </div>
         <textarea id="text-output" data-role="output" rows="8" readonly></textarea>
     </div>

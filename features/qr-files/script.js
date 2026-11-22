@@ -86,8 +86,8 @@
 
             const processCompleteFile = async () => {
                 try {
-                    log('🔄 Đang xử lý file...', 'info');
-                    setStatus('🔄 Đang xử lý...');
+                    log('🔄 Processing file…', 'info');
+                    setStatus('🔄 Processing…');
 
                     const base64data = Array.from({ length: total }, (_, i) => received[i]).join('');
                     const compressed = Uint8Array.from(atob(base64data), c => c.charCodeAt(0));
@@ -96,25 +96,25 @@
                     if (filename.toLowerCase().endsWith('.zip')) {
                         await new JSZip().loadAsync(raw); // kiểm tra file ZIP hợp lệ
                         setDownload(new Blob([raw], { type: 'application/zip' }));
-                        setStatus('✅ File ZIP sẵn sàng!');
-                        log('🎉 Hoàn thành! File ZIP đã sẵn sàng.', 'success');
+                        setStatus('✅ ZIP file ready!');
+                        log('🎉 Done! ZIP file is ready.', 'success');
                     } else {
                         setDownload(new Blob([raw], { type: 'application/octet-stream' }));
-                        setStatus('✅ File sẵn sàng!');
-                        log('🎉 Hoàn thành! File đã sẵn sàng tải.', 'success');
+                        setStatus('✅ File ready!');
+                        log('🎉 Done! File is ready to download.', 'success');
                     }
-                    UI.toast('Đã nhận đủ file');
+                    UI.toast('All file blocks received');
 
                     if (typeof Auth !== 'undefined' && Auth.isLoggedIn()) uploadToServer(raw, filename);
                 } catch (error) {
-                    log(`❌ Lỗi: ${error.message}`, 'error');
-                    setStatus(`❌ Lỗi: ${error.message}`);
+                    log(`❌ Error: ${error.message}`, 'error');
+                    setStatus(`❌ Error: ${error.message}`);
                 }
             };
 
             const uploadToServer = async (raw, fname) => {
                 try {
-                    log('☁️ Đang gửi lên server...', 'info');
+                    log('☁️ Uploading to server…', 'info');
                     const ctrl = new AbortController();
                     const timer = setTimeout(() => ctrl.abort(), 30000);
                     const res = await Auth.authFetch('/qr-files/upload', {
@@ -129,13 +129,13 @@
                     });
                     clearTimeout(timer);
                     if (res.ok) {
-                        log(`✅ Đã lưu lên server: ${fname}`, 'success');
+                        log(`✅ Saved to server: ${fname}`, 'success');
                         loadFileList(1);
                     } else {
-                        log('⚠️ Gửi server thất bại', 'warning');
+                        log('⚠️ Server upload failed', 'warning');
                     }
                 } catch (e) {
-                    log('⚠️ Không thể gửi lên server', 'warning');
+                    log('⚠️ Could not upload to server', 'warning');
                 }
             };
 
@@ -190,8 +190,8 @@
                 const receivedCount = Object.keys(received).length;
                 const missing = getMissingBlocks();
                 setStatus(missing.length > 0
-                    ? `📊 ${receivedCount}/${total} - Thiếu ${missing.length}`
-                    : `✅ Đủ ${total} blocks!`);
+                    ? `📊 ${receivedCount}/${total} – Missing ${missing.length}`
+                    : `✅ All ${total} blocks received!`);
 
                 if (receivedCount === total) processCompleteFile();
             }
@@ -219,13 +219,13 @@
                             stopScanner();
                             return;
                         }
-                        setStatus('🔍 Sẵn sàng quét');
-                        log('✅ Camera sẵn sàng', 'success');
+                        setStatus('🔍 Ready to scan');
+                        log('✅ Camera ready', 'success');
                     })
                     .catch(err => {
                         if (destroyed) return;
-                        setStatus('🚫 Không mở được camera. Hãy cho phép trình duyệt truy cập camera.');
-                        log(`❌ Lỗi: ${err}`, 'error');
+                        setStatus('🚫 Could not open camera. Please allow camera access in your browser.');
+                        log(`❌ Error: ${err}`, 'error');
                         isScanning = false;
                     });
             };
@@ -263,12 +263,12 @@
 
             function renderFileList(json) {
                 if (!json.data || json.data.length === 0) {
-                    fileListWrap.innerHTML = '<p class="text-muted">Chưa có file nào.</p>';
+                    fileListWrap.innerHTML = '<p class="text-muted">No files yet.</p>';
                     fileListPg.innerHTML = '';
                     return;
                 }
                 fileListWrap.innerHTML = `<div class="table-wrap"><table class="scan-table">
-                    <thead><tr><th>#</th><th>Tên file</th><th>Kích thước</th><th>Thời gian</th></tr></thead>
+                    <thead><tr><th>#</th><th>File name</th><th>Size</th><th>Time</th></tr></thead>
                     <tbody>${json.data.map((r, i) => `<tr>
                         <td>${(fileListPage - 1) * json.per_page + i + 1}</td>
                         <td>${esc(r.filename)}</td>

@@ -69,7 +69,7 @@ const Auth = (() => {
     async function register(username, password) {
         const res  = await _post('/auth/register', { username, password, agreed: true });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Đăng ký thất bại');
+        if (!res.ok) throw new Error(data.error || 'Registration failed');
         _save(data.access_token, data.refresh_token, data.username);
         return data;
     }
@@ -77,7 +77,7 @@ const Auth = (() => {
     async function login(username, password) {
         const res  = await _post('/auth/login', { username, password });
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || 'Đăng nhập thất bại');
+        if (!res.ok) throw new Error(data.error || 'Login failed');
         _save(data.access_token, data.refresh_token, data.username);
         return data;
     }
@@ -97,10 +97,10 @@ const Auth = (() => {
         if (user) {
             widget.innerHTML = `
                 <span class="auth-username">👤 ${esc(user.username)}</span>
-                <button class="auth-btn auth-btn-logout" id="auth-logout-btn">Đăng xuất</button>`;
+                <button class="auth-btn auth-btn-logout" id="auth-logout-btn">Sign out</button>`;
             document.getElementById('auth-logout-btn').addEventListener('click', () => logout());
         } else {
-            widget.innerHTML = `<button class="auth-btn" id="auth-open-btn">🔑 Đăng nhập</button>`;
+            widget.innerHTML = `<button class="auth-btn" id="auth-open-btn">🔑 Sign in</button>`;
             document.getElementById('auth-open-btn').addEventListener('click', () => openModal());
         }
     }
@@ -115,45 +115,45 @@ const Auth = (() => {
         modal.innerHTML = `
         <div class="modal-box">
             <div class="modal-header">
-                <h2 id="auth-modal-title">Đăng nhập</h2>
+                <h2 id="auth-modal-title">Sign in</h2>
                 <button class="modal-close" id="auth-modal-close-x">✕</button>
             </div>
             <div class="modal-body">
                 <div class="auth-tabs">
-                    <button class="auth-tab active" data-tab="login">Đăng nhập</button>
-                    <button class="auth-tab" data-tab="register">Đăng ký</button>
+                    <button class="auth-tab active" data-tab="login">Sign in</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
                 </div>
 
                 <div id="auth-tab-login">
                     <div class="auth-input-group">
                         <label>Username</label>
-                        <input id="login-username" type="text" placeholder="Nhập username" autocomplete="username">
+                        <input id="login-username" type="text" placeholder="Enter username" autocomplete="username">
                     </div>
                     <div class="auth-input-group">
                         <label>Password</label>
-                        <input id="login-password" type="password" placeholder="Nhập password" autocomplete="current-password">
+                        <input id="login-password" type="password" placeholder="Enter password" autocomplete="current-password">
                     </div>
                     <div id="login-error" class="auth-error"></div>
-                    <button class="auth-submit-btn" id="login-submit-btn">Đăng nhập</button>
+                    <button class="auth-submit-btn" id="login-submit-btn">Sign in</button>
                 </div>
 
                 <div id="auth-tab-register" style="display:none">
                     <div class="auth-input-group">
                         <label>Username</label>
-                        <input id="reg-username" type="text" placeholder="3-32 ký tự, chữ số và _" autocomplete="username">
+                        <input id="reg-username" type="text" placeholder="3–32 chars, letters, numbers, _" autocomplete="username">
                     </div>
                     <div class="auth-input-group">
                         <label>Password</label>
-                        <input id="reg-password" type="password" placeholder="Tối thiểu 6 ký tự" autocomplete="new-password">
+                        <input id="reg-password" type="password" placeholder="At least 6 characters" autocomplete="new-password">
                     </div>
                     <div class="auth-terms">
                         <label>
                             <input type="checkbox" id="reg-agree">
-                            <span>Tôi đã đọc và đồng ý <a href="terms.html" target="_blank">Điều khoản sử dụng</a>. Hệ thống sẽ lưu trữ dữ liệu hoạt động (IP, User Agent, nội dung QR...) cho mục đích thống kê.</span>
+                            <span>I have read and agree to the <a href="terms.html" target="_blank">Terms of Use</a>. Activity data (IP, user agent, QR content, etc.) may be stored for statistics.</span>
                         </label>
                     </div>
                     <div id="reg-error" class="auth-error"></div>
-                    <button class="auth-submit-btn" id="reg-submit-btn">Tạo tài khoản</button>
+                    <button class="auth-submit-btn" id="reg-submit-btn">Create account</button>
                 </div>
             </div>
         </div>`;
@@ -172,7 +172,7 @@ const Auth = (() => {
                 const isLogin = btn.dataset.tab === 'login';
                 document.getElementById('auth-tab-login').style.display    = isLogin ? '' : 'none';
                 document.getElementById('auth-tab-register').style.display = isLogin ? 'none' : '';
-                document.getElementById('auth-modal-title').textContent    = isLogin ? 'Đăng nhập' : 'Tạo tài khoản';
+                document.getElementById('auth-modal-title').textContent    = isLogin ? 'Sign in' : 'Create account';
             });
         });
 
@@ -204,7 +204,7 @@ const Auth = (() => {
             const btn = document.getElementById('reg-submit-btn');
             const err = document.getElementById('reg-error');
             if (!document.getElementById('reg-agree').checked) {
-                err.textContent = '⚠ Bạn phải đồng ý điều khoản'; return;
+                err.textContent = '⚠ You must accept the terms'; return;
             }
             btn.disabled = true; err.textContent = '';
             try {

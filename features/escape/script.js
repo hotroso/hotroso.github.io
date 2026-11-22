@@ -2,34 +2,34 @@
 (function () {
     const configs = {
         'escape-java': {
-            placeholder: 'Nhập chuỗi Java/JavaScript cần escape hoặc unescape...',
+            placeholder: 'Enter a Java/JavaScript string to escape or unescape…',
             escape: v => EscapeUtils.escapeJava(v),
             unescape: v => EscapeUtils.unescapeJava(v),
-            example: 'Xin chào "Việt Nam"\nĐường dẫn: C:\\temp\\file.txt'
+            example: 'Hello "World"\nPath: C:\\temp\\file.txt'
         },
         'escape-html': {
-            placeholder: 'Nhập HTML cần escape hoặc unescape...',
+            placeholder: 'Enter HTML to escape or unescape…',
             escape: v => EscapeUtils.escapeHtml(v),
             unescape: v => EscapeUtils.unescapeHtml(v),
             example: '<a href="https://example.com?a=1&b=2">Tom & Jerry\'s</a>'
         },
         'escape-xml': {
-            placeholder: 'Nhập XML cần escape hoặc unescape...',
+            placeholder: 'Enter XML to escape or unescape…',
             escape: v => EscapeUtils.escapeXml(v),
             unescape: v => EscapeUtils.unescapeXml(v),
-            example: '<note type="reminder">Mua sữa & bánh mì</note>'
+            example: '<note type="reminder">Buy milk & bread</note>'
         },
         'escape-sql': {
-            placeholder: 'Nhập chuỗi cần đưa vào câu lệnh SQL...',
+            placeholder: 'Enter a string for a SQL literal…',
             escape: v => EscapeUtils.escapeSql(v),
             unescape: v => EscapeUtils.unescapeSql(v),
             example: "O'Reilly's Book"
         },
         'escape-csv': {
-            placeholder: 'Nhập giá trị cần đưa vào một ô CSV...',
+            placeholder: 'Enter a value for a CSV field…',
             escape: v => EscapeUtils.escapeCsv(v),
             unescape: v => EscapeUtils.unescapeCsv(v),
-            example: 'Hà Nội, Việt Nam "thủ đô"'
+            example: 'New York, USA "the big apple"'
         }
     };
 

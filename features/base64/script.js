@@ -17,20 +17,20 @@
         try {
             binary = atob(clean);
         } catch {
-            throw new Error('Chuỗi Base64 không hợp lệ.');
+            throw new Error('Invalid Base64 string.');
         }
         const bytes = Uint8Array.from(binary, c => c.charCodeAt(0));
         try {
             return new TextDecoder('utf-8', { fatal: true }).decode(bytes);
         } catch {
-            throw new Error('Giải mã được nhưng dữ liệu không phải văn bản UTF-8 (có thể là file nhị phân).');
+            throw new Error('Decoded data is not valid UTF-8 text (it may be binary).');
         }
     }
 
     Tools.register('base64', {
         init(root) {
             UI.transformTool(root, {
-                example: 'Xin chào Việt Nam! 👋',
+                example: 'Hello World! 👋',
                 actions: { encode, decode }
             });
         }

@@ -1,36 +1,36 @@
 <div class="card tool">
     <div class="tool-options">
         <label class="inline-field">
-            Độ dài mỗi chuỗi
+            Length
             <input type="number" data-option="length" value="16" min="1" max="1000">
         </label>
         <label class="inline-field">
-            Số lượng
+            Count
             <input type="number" data-option="count" value="1" min="1" max="100">
         </label>
     </div>
 
     <div class="tool-actions">
-        <button type="button" class="btn" data-action="password">🔐 Mật khẩu</button>
+        <button type="button" class="btn" data-action="password">🔐 Password</button>
         <button type="button" class="btn btn-outline" data-action="uuid">🆔 UUID</button>
-        <button type="button" class="btn btn-outline" data-action="alphanumeric">Chữ + số</button>
-        <button type="button" class="btn btn-outline" data-action="alphabetic">Chỉ chữ</button>
-        <button type="button" class="btn btn-outline" data-action="numeric">Chỉ số</button>
+        <button type="button" class="btn btn-outline" data-action="alphanumeric">Alphanumeric</button>
+        <button type="button" class="btn btn-outline" data-action="alphabetic">Letters only</button>
+        <button type="button" class="btn btn-outline" data-action="numeric">Numbers only</button>
         <button type="button" class="btn btn-outline" data-action="hex">Hex</button>
         <button type="button" class="btn btn-outline" data-action="ascii">ASCII</button>
         <span class="spacer"></span>
-        <button type="button" class="btn btn-ghost" data-action="clear">Xóa</button>
+        <button type="button" class="btn btn-ghost" data-action="clear">Clear</button>
     </div>
 
     <p class="tool-error" data-role="error" role="alert" hidden></p>
 
     <div class="field">
         <div class="field-head">
-            <label for="random-output">Kết quả</label>
-            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Sao chép</button>
+            <label for="random-output">Result</label>
+            <button type="button" class="btn btn-sm btn-outline" data-action="copy">📋 Copy</button>
         </div>
         <textarea id="random-output" data-role="output" rows="10" readonly spellcheck="false"></textarea>
     </div>
 
-    <p class="tool-hint">UUID dùng phiên bản 4 và bỏ qua tùy chọn độ dài.</p>
+    <p class="tool-hint">UUID is version 4 and ignores the length option.</p>
 </div>

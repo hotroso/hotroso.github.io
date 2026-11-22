@@ -8,7 +8,7 @@
     Tools.register('js-beautify', {
         init(root) {
             UI.transformTool(root, {
-                example: "function tinhTong(a){let t=0;for(const s of a){t+=s}return t}console.log(tinhTong([1,2,3]));",
+                example: "function sum(a){let t=0;for(const s of a){t+=s}return t}console.log(sum([1,2,3]));",
                 actions: {
                     beautify: (v, r) => js_beautify(v, { ...indentOptions(r), space_in_empty_paren: true })
                 }

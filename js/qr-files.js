@@ -58,8 +58,8 @@ window.initQRFiles = function() {
 
     const processCompleteFile = async () => {
         try {
-            log("🔄 Đang xử lý file...", 'info');
-            statusEl.innerHTML = "🔄 Đang xử lý...";
+            log("🔄 Processing file…", 'info');
+            statusEl.innerHTML = "🔄 Processing…";
 
             const base64data = Array.from({length: total}, (_, i) => received[i]).join('');
             const compressed = Uint8Array.from(atob(base64data), c => c.charCodeAt(0));
@@ -73,20 +73,20 @@ window.initQRFiles = function() {
                 downloadFileBtn.href = url;
                 downloadFileBtn.download = filename;
                 downloadFileBtn.classList.remove('hidden');
-                statusEl.innerHTML = "✅ File ZIP sẵn sàng!";
-                log("🎉 Hoàn thành! File ZIP đã sẵn sàng.", 'success');
+                statusEl.innerHTML = "✅ ZIP file ready!";
+                log("🎉 Done! ZIP file is ready.", 'success');
             } else {
                 const blob = new Blob([raw], {type: "application/octet-stream"});
                 const url = URL.createObjectURL(blob);
                 downloadFileBtn.href = url;
                 downloadFileBtn.download = filename;
                 downloadFileBtn.classList.remove('hidden');
-                statusEl.innerHTML = "✅ File sẵn sàng!";
-                log("🎉 Hoàn thành! File đã sẵn sàng tải.", 'success');
+                statusEl.innerHTML = "✅ File ready!";
+                log("🎉 Done! File is ready to download.", 'success');
             }
         } catch (error) {
-            log(`❌ Lỗi: ${error.message}`, 'error');
-            statusEl.innerHTML = `❌ Lỗi: ${error.message}`;
+            log(`❌ Error: ${error.message}`, 'error');
+            statusEl.innerHTML = `❌ Error: ${error.message}`;
         }
     };
 
@@ -142,9 +142,9 @@ window.initQRFiles = function() {
         const missing = getMissingBlocks();
 
         if (missing.length > 0) {
-            statusEl.innerHTML = `📊 ${receivedCount}/${total} - Thiếu ${missing.length}`;
+            statusEl.innerHTML = `📊 ${receivedCount}/${total} - Missing ${missing.length}`;
         } else {
-            statusEl.innerHTML = `✅ Đủ ${total} blocks!`;
+            statusEl.innerHTML = `✅ All ${total} blocks!`;
         }
 
         if (receivedCount === total) {
@@ -169,14 +169,14 @@ window.initQRFiles = function() {
 
         qrCodeScanner.start(cameraConfig, config, onScanSuccess, () => {})
             .then(() => {
-                statusEl.innerHTML = "🔍 Sẵn sàng quét";
-                log("✅ Camera sẵn sàng", 'success');
+                statusEl.innerHTML = "🔍 Ready to scan";
+                log("✅ Camera ready", 'success');
                 isScanning = true;
                 currentCameraIndex = useBackCamera ? 0 : 1;
             })
             .catch(err => {
-                statusEl.innerHTML = "🚫 Lỗi camera";
-                log(`❌ Lỗi: ${err}`, 'error');
+                statusEl.innerHTML = "🚫 Camera error";
+                log(`❌ Error: ${err}`, 'error');
                 isScanning = false;
             });
     };

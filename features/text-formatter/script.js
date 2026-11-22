@@ -33,7 +33,7 @@
     Tools.register('text-formatter', {
         init(root) {
             UI.transformTool(root, {
-                example: 'hôm nay trời đẹp, chúng ta cùng đi CÀ PHÊ nhé',
+                example: 'hello world, LET us grab some COFFEE',
                 actions: {
                     capitalize: v => eachWordFirst(v, c => c.toUpperCase()),
                     capitalizeFully: v => eachWordFirst(v.toLowerCase(), c => c.toUpperCase()),

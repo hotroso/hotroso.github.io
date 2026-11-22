@@ -42,7 +42,7 @@
     // ── Sao chép ──────────────────────────────────────────────────────────
     async function copy(text) {
         if (!text) {
-            toast('Chưa có kết quả để sao chép', 'info');
+            toast('Nothing to copy yet', 'info');
             return false;
         }
         try {
@@ -59,11 +59,11 @@
             const ok = document.execCommand('copy');
             ta.remove();
             if (!ok) {
-                toast('Không sao chép được, hãy chọn và copy thủ công', 'error');
+                toast('Could not copy. Please select and copy manually', 'error');
                 return false;
             }
         }
-        toast('Đã sao chép');
+        toast('Copied');
         return true;
     }
 
@@ -98,7 +98,7 @@
         const updateCounts = () => {
             root.querySelectorAll('[data-count]').forEach(el => {
                 const src = el.dataset.count === 'output' ? output : input;
-                if (src) el.textContent = src.value.length.toLocaleString('vi-VN') + ' ký tự';
+                if (src) el.textContent = src.value.length.toLocaleString('en-US') + ' chars';
             });
         };
 
@@ -108,7 +108,7 @@
             setError('');
             const value = input ? input.value : '';
             if (requireInput && !value.trim()) {
-                setError('Vui lòng nhập nội dung.');
+                setError('Please enter some content.');
                 input.focus();
                 return;
             }
@@ -178,7 +178,7 @@
         const btn = document.getElementById('theme-toggle');
         if (btn) {
             const isDark = theme === 'dark';
-            const label = isDark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối';
+            const label = isDark ? 'Switch to light mode' : 'Switch to dark mode';
             btn.textContent = isDark ? '☀️' : '🌙';
             btn.setAttribute('aria-label', label);
             btn.title = label;
