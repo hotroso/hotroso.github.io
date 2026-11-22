@@ -157,12 +157,12 @@
       "group": "format",
       "name": "CSS Minify",
       "icon": "🎨",
-      "title": "CSS Minify Online - Compress CSS with CleanCSS",
-      "desc": "Minify CSS with CleanCSS to reduce stylesheet size.",
-      "keywords": "css minify compress cleancss",
+      "title": "CSS Minify Online - Compress CSS with CSSO",
+      "desc": "Minify CSS with CSSO to reduce stylesheet size.",
+      "keywords": "css minify compress csso",
       "html": "features/css-minify/index.html",
       "js": "features/css-minify/script.js",
-      "libs": ["https://cdn.jsdelivr.net/npm/clean-css@5.3.2/dist/clean-css.min.js"]
+      "libs": ["js/csso.min.js"]
     },
     {
       "id": "css-beautify",
