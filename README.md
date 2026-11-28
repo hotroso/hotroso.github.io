@@ -32,7 +32,7 @@ A product of **[Hỗ Trợ Giải Pháp Số (Hotroso)](https://github.com/hotro
 
 | App | Description | Live Site |
 | --- | --- | --- |
-| **MD Helper** | Local-first browser Markdown editor, Pro WYSIWYG mode, Mermaid/KaTeX & Word/PDF/ZIP export | [hotromd.github.io](https://hotromd.github.io/) |
+| **MD Helper** | Local-first browser Markdown editor, Pro WYSIWYG mode, nested folders, Mermaid/KaTeX & Word/PDF/ZIP export | [mdhelper.github.io](https://mdhelper.github.io/) |
 | **Âm Lịch Việt Nam** | Offline Vietnamese Lunar–Solar Calendar with Can Chi, auspicious hours & reminders | [amlichvietnam.github.io](https://amlichvietnam.github.io/) |
 | **Hỗ Trợ Bản Đồ** | Plot VN2000 & WGS84 land parcel coordinates, measure area/distance & share map links | [hotrobando.github.io](https://hotrobando.github.io/) |
 | **Yêu Lịch Sử** | Interactive Vietnamese History Timeline (TimelineJS v3) | [yeulichsu.github.io](https://yeulichsu.github.io/) |
